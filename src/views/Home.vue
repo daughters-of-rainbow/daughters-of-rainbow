@@ -76,7 +76,7 @@
                     <v-row class="px-4 pb-6">
                         <v-col cols="12" md="6">
                             <div class="mang">
-                                <v-img src="../assets/blinkBox.png"></v-img>
+                                <v-img src="../assets/blindBox.png"></v-img>
                             </div>
                         </v-col>
                         <v-col cols="12" md="6">
@@ -574,7 +574,7 @@
                     <v-row>
                         <v-col>
                             <v-btn  @click="oneClickSell" color="#fee08a" class="tenetFFF pa-6" block>
-                                <span >CKAIM </span>
+                                <span >CLAIM </span>
                             </v-btn>
                         </v-col>
                     </v-row>
