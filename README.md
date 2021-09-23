@@ -1,4 +1,5 @@
-# beeapp
+# daughters-of-rainbow
+
 
 ## Project setup
 ```
