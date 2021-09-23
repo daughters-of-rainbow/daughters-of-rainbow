@@ -123,14 +123,14 @@
                                 <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                     <v-col class="px-0">
                                         <div class="hasMinted">
-                                            <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> daughters minted
+                                            <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted
                                         </div>
                                     </v-col>
                                 </v-row>
                                 <v-row class="deadLine">
                                     <v-col class="px-0" :class="$vuetify.breakpoint.mobile ? '' : 'ft20'">
-                                        <div>Private Sale : 26th Sep 2021 10am UTC</div>
-                                        <div>Official Launch : 2nd Oct 2021 10am UTC</div>
+                                        <div>Private Sale : 11th Oct 2021 10am UTC</div>
+                                        <div>Official Launch : 13th Oct 2021 10am UTC</div>
                                     </v-col>
                                 </v-row>
                             </div>
@@ -210,8 +210,8 @@
                             <v-col :cols="$vuetify.breakpoint.mobile ? 12 : 8">
                                 <p :class="$vuetify.breakpoint.mobile ? '' : 'ft20'">
                                     There will be 1,523 Daughters of Rainbow NFT in phase I collection. Each cost the flat rate of 0.05 ETH.
-                                    450 rare animated daughters in phase II collection. Each cost 0.15 ETH. Private sale is on 26th Sep 2021
-                                    10am UTC. Official launch is on 2nd Oct 2021 10am UTC. Please visit our twitter account to join our
+                                    450 rare animated daughters in phase II collection. Each cost 0.15 ETH. Private sale is at 11th Oct 2021
+                                    10am UTC. Official launch is at 13th Oct 2021 10am UTC. Please visit our twitter account to join our
                                     Private-sale whitelist and get updates.
                                 </p>
                             </v-col>
@@ -618,7 +618,7 @@ export default {
                 ques: 'WHAT IS THE RAINBOW ESSENCE?',
                 answer: 'The concept of the Daughters of Rainbow is anchored in the Rainbow Sea, which exists at the source of the Universe. All answers related to humans flow through the Rainbow Sea and manifest in the form of rainbow light. The artist hopes that NFTs in different forms can become virtual containers that capture this light -- the Rainbow Essence -- from the universe, storing the connection between humans and the Rainbow Sea, giving access to the answers to the source of life.'
             },
-            { ques: 'WHEN IS THE LAUNCH DATE?', answer: 'Official Launch is at 2nd Oct 2021 10am UTC' },
+            { ques: 'WHEN IS THE LAUNCH DATE?', answer: 'Official Launch is at 13th Oct 2021 10am UTC' },
             {
                 ques: 'HOW MUCH DOES EACH DAUGHTERS OF RAINBOW COST IN PHASE I INITIAL LAUNCH?',
                 answer: 'Each DAUGHTERS in phase I will be minted at 0.05 ETH + Gas on minting day！'
@@ -633,7 +633,7 @@ export default {
             },
             {
                 ques: 'WILL THERE BE A PRIVATE-SALE?',
-                answer: 'Private-sale date is on Sep 26th 10am UTC. We will make sure that active community members will be rewarded. Please keep updated through our  Discord/Twitter to join our private-sale whitelist.'
+                answer: 'Private-sale date is at 11th Oct 10am UTC. We will make sure that active community members will be rewarded. Please keep updated through our  Discord/Twitter to join our private-sale whitelist.'
             },
             {
                 ques: 'WHAT IS DAUGHTERS OF ALIEN SERIES?',
