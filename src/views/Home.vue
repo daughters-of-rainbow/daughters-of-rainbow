@@ -96,7 +96,7 @@
                                 </v-row>
                                 <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                     <v-col class="px-0">
-                                        <v-card v-if="true" class="operateBtn" color="#AA99EA">
+                                        <v-card v-if="false" class="operateBtn" color="#AA99EA">
                                             <v-row justify="center" style="overflow: hidden; max-height: 72px">
                                                 <v-col class="star text-center" cols="2">
                                                     <v-icon size="30" color="#4b3983">mdi-star</v-icon>
@@ -123,7 +123,8 @@
                                 <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                     <v-col class="px-0">
                                         <div class="hasMinted">
-                                            <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted
+                                            <!-- <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted -->
+                                            <span>Phase I: XXX / 999 </span> DAUGHTERS Minted
                                         </div>
                                     </v-col>
                                 </v-row>
@@ -470,8 +471,8 @@
                         </v-col>
                     </v-row>
                 </v-img>
-                <div>
-                    <p :class="$vuetify.breakpoint.mobile ? 'ft30' : 'text-h3 mt-10'" class="cfff my-3 text-center">
+                <div class="sectionCrew">
+                    <h3 :class="$vuetify.breakpoint.mobile ? 'ft30' : 'text-h3 mt-10'" class="sectionTitle cfff text-center">
                         <svg-icon
                             v-if="$vuetify.breakpoint.mobile"
                             className="logo_icon middle_svg mr-1"
@@ -479,51 +480,43 @@
                         ></svg-icon>
                         <svg-icon v-else className="v2 middle_svg" data_iconName="ic-crew"></svg-icon>
                         Crew
-                    </p>
-                    <v-row no-gutters justify="space-around" :class="$vuetify.breakpoint.mobile ? 'ml-2' : ''">
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_4.png">
-                                    <v-img contain class="Mbox3" src="../assets/1.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">-NOR NOR, the Creator -</h5>
-                                        <h6 class="cfff">An illustration artist with exhibitions in TYO/OSA/TPE</h6>
-                                    </div>
-                                </v-img>
-                            </div>
+                    </h3>
+                    <v-row no-gutters justify="space-around">
+                        <v-col cols="6" md="3" class="crewItem">
+                            <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                <v-img contain class="Mbox3" src="../assets/crew-1.png"></v-img>
+                                <div class="crewInfo text-center mt-2">
+                                    <h5 class="strc">- Normal Normalｘ Yankong -<br>The Creator</h5>
+                                    <h6 class="cfff">An Artist couple in Taipei jointly brought DOR into life.</h6>
+                                </div>
+                            </v-img>
                         </v-col>
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_3.png">
-                                    <v-img contain class="Mbox3" src="../assets/8.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">-ODEM T,the Evangelist-</h5>
-                                        <h6 class="cfff">Founder of SPARK!. Internet Marketing/Social community expert</h6>
-                                    </div>
-                                </v-img>
-                            </div>
+                        <v-col cols="6" md="3" class="crewItem">
+                            <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                <v-img contain class="Mbox3" src="../assets/crew-2.png"></v-img>
+                                <div class="crewInfo text-center mt-2">
+                                    <h5 class="strc">- ODEM T -<br>The Evangelist</h5>
+                                    <h6 class="cfff">Founder of SPARK!. Internet Marketing. Social community expert.</h6>
+                                </div>
+                            </v-img>
                         </v-col>
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_3.png">
-                                    <v-img contain class="Mbox3" src="../assets/19.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">- A C, the Enthusiast -</h5>
-                                        <h6 class="cfff">Co-Founder of SPARK!. Marketing professional. Crypto Investor.</h6>
-                                    </div>
-                                </v-img>
-                            </div>
+                        <v-col cols="6" md="3" class="crewItem">
+                            <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                <v-img contain class="Mbox3" src="../assets/crew-3.png"></v-img>
+                                <div class="crewInfo text-center mt-2">
+                                    <h5 class="strc">- A C -<br>The Enthusiast </h5>
+                                    <h6 class="cfff">Co-Founder of SPARK!. Marketing professional. Crypto Investor.</h6>
+                                </div>
+                            </v-img>
                         </v-col>
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_3.png">
-                                    <v-img contain class="Mbox3" src="../assets/22.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">- H,the Alchemist -</h5>
-                                        <h6 class="cfff">Digital Art/ Developer</h6>
-                                    </div>
-                                </v-img>
-                            </div>
+                        <v-col cols="6" md="3" class="crewItem">
+                            <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                <v-img contain class="Mbox3" src="../assets/crew-4.png"></v-img>
+                                <div class="crewInfo text-center mt-2">
+                                    <h5 class="strc">- H H -<br>The Alchemist</h5>
+                                    <h6 class="cfff">Digital Artist and Web Developer. Love creativity and programming.</h6>
+                                </div>
+                            </v-img>
                         </v-col>
                     </v-row>
                 </div>
@@ -556,7 +549,7 @@
             </v-col>
             <v-col cols="2" md="2"> </v-col>
         </v-row>
-        <v-dialog   persistent  v-model="showDialog">
+        <!-- <v-dialog   persistent  v-model="showDialog">
             
                
         <div class="gradient-border">
@@ -582,7 +575,7 @@
             </div>
         </div>
             
-        </v-dialog>
+        </v-dialog> -->
     </div>
 </template>
 
@@ -688,31 +681,31 @@ export default {
     },
     async mounted() {
         window.addEventListener('scroll', this.handleScroll, true);
-        const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
-        this.local_address = address;
-        this.nonce = await provider.getTransactionCount(this.local_address);
-        console.info(this.nonce);
-        this.gasPrice = await provider.getGasPrice();
-        this.chainId = chainId;
-        let ethBalance = await provider.getBalance(address);
-        this.ethBalance = ethers.utils.formatEther(ethBalance);
-        this.tenetProvider = provider;
-        this.masterInstance = masterInstance;
-        this.masterAddr = masterAddr;
+    //     const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
+    //     this.local_address = address;
+    //     this.nonce = await provider.getTransactionCount(this.local_address);
+    //     console.info(this.nonce);
+    //     this.gasPrice = await provider.getGasPrice();
+    //     this.chainId = chainId;
+    //     let ethBalance = await provider.getBalance(address);
+    //     this.ethBalance = ethers.utils.formatEther(ethBalance);
+    //     this.tenetProvider = provider;
+    //     this.masterInstance = masterInstance;
+    //     this.masterAddr = masterAddr;
 
-        await this.initNftInfo();
-        //获取当前网络环境
-        let netInfo = await provider.getNetwork();
-        ethereum.on('chainChanged', (res) => {
-            if (parseInt(res) != 1) {
-                this.$toast({ text: 'current RPC node is ' + netInfo.name });
-                this.reload();
-            }
-        });
-        if (netInfo.name != 'homestead') {
-            this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
-        }
-        // const onboarding = new MetaMaskOnboarding();
+    //     await this.initNftInfo();
+    //     //获取当前网络环境
+    //     let netInfo = await provider.getNetwork();
+    //     ethereum.on('chainChanged', (res) => {
+    //         if (parseInt(res) != 1) {
+    //             this.$toast({ text: 'current RPC node is ' + netInfo.name });
+    //             this.reload();
+    //         }
+    //     });
+    //     if (netInfo.name != 'homestead') {
+    //         this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
+    //     }
+    //     // const onboarding = new MetaMaskOnboarding();
     },
     methods: {
         //初始化数据
@@ -806,12 +799,12 @@ $bg-img: '../assets/h5Swiper.png';
 .gradient-border {
     position: relative;
     display: flex;
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
     font-family: Lato, sans-serif;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     color: white;
     background: #222;
     border-radius: 15px;
@@ -833,11 +826,7 @@ $bg-img: '../assets/h5Swiper.png';
   animation: moveGradient 4s alternate infinite;
 }
 
-@keyframes moveGradient {
-  50% {
-    background-position: 100% 50%;
-  }
-}
+
 .h5-page {
     height: 100%;
     background: url('../assets/h5-bg.png') no-repeat;
@@ -1009,38 +998,52 @@ $bg-img: '../assets/h5Swiper.png';
     line-height: 3;
 }
 .waiK {
-    width: 179px;
-    height: 336px;
+    // width: 179px;
+    // height: 336px;
+    width: 90%;
+    height: 100%;
+    min-height: 420px;
     margin: 0 auto;
     & .Mbox3 {
-        margin: 45px 0 0 10px;
-        width: 150px;
-        height: 160px;
+        // margin: 45px 0 0 10px;
+        // width: 150px;
+        // height: 160px;
+        margin: 10% auto 6% auto;
+        width: 70%;
+        height: auto;
     }
 }
 .waiKPc {
-    width: 289px;
-    height: 466px;
+    // width: 289px;
+    // height: 466px;
+    width: 90%;
+    height: auto;
     margin: 0px auto;
     & .Mbox3 {
-        margin: 55px 0 0 10px;
-        width: 250px;
-        height: 280px;
+        // margin: 55px 0 0 10px;
+        // width: 250px;
+        // height: 280px;
+        margin: 40px auto 15px auto;
+        width: 70%;
+        height: auto;
     }
 }
 .ft30 {
     font-size: 30px;
 }
 .hasMinted {
-    height: 55px;
-    line-height: 50px;
+    // height: 55px;
+    // line-height: 50px;
+    line-height: 24px;
     text-align: center;
     border: 2px solid #b1b7ca;
     border-radius: 12px;
     font-weight: 800;
     font-size: 18px;
     color: #fff;
+    padding: 15px;
     & > span {
+        margin-right: 10px;
         color: #f44844;
     }
 }
@@ -1075,5 +1078,114 @@ $bg-img: '../assets/h5Swiper.png';
     width: 100%;
     min-height: 300px;
 }
+
+// * add
+.sectionTitle {
+    // font-size: 3rem;
+    // font-family: "Eras ITC", "Eras Light ITC", sans-serif;
+    // font-weight: bold;
+    margin-bottom: 5%;
+    // & svg {
+    //     margin-top: -12px;
+    // }
+}
+.sectionCrew {
+    width: 100%;
+    max-width: 1350px;
+    margin: 5% auto 10% auto;;
+    & .crewInfo {
+        margin: 0 15%;
+    }
+    & h5 {
+        line-height: 15px;
+        margin-bottom: 8px
+    }
+    & h6 {
+        line-height: 15px;
+    }
+}
+.crewItem {
+    margin-bottom: 5%;
+}
+.crewMoreInfo button {
+    background: linear-gradient(340deg, #5f86f2, #a65ff2, #f25fd0);
+    font-size: 12px;
+    height: auto;
+    padding: 5px 15px;
+}
+.crewModal .text-h5 p:first-child {
+    position: relative;
+}
+.crewModal .text-h5 p:first-child::before,
+.crewModal .text-h5 p:first-child::after {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    border-radius: 8px;
+}
+.crewModal .text-h5 p:first-child::before {
+    transform: translateX(-50%) rotateZ(45deg);
+}
+.crewModal .text-h5 p:first-child::after {
+    transform: translateX(-50%) rotateZ(-45deg);
+}
+.crewLink a {
+    position: relative;
+}
+.crewLink a::after {
+    content: "";
+    color: #333;
+    font-size: 12px;
+    padding: 0 5px;
+    position: absolute;
+    top: -15px;
+    z-index: 1000;
+    background: #fff;
+    transform: scale(0);
+    transition: .2s ease;
+}
+.crewLink a.website::after {
+    content: "website";
+}
+.crewLink a.instagram::after {
+    content: "instagram";
+}
+.crewLink a:hover::after {
+    transform: scale(.7);
+}
+
+@media screen and (max-width: 1024px) {
+    .sectionCrew {
+        padding: 0 3%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .hasMinted {
+        & > span {
+            display: block;
+            margin-right: 0;
+        }
+    }
+    .crewItem {
+        margin-bottom: 10%;
+    }
+    .waiK {
+        min-height: 105%;
+    }
+}
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
 </style>
 
+<style>
+.sectionCrew .crewBackground > .v-image__image {
+    background-size: 100% 100%;
+}
+</style>

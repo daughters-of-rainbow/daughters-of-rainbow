@@ -114,8 +114,16 @@ export default {
   width: 30px;
   height: 30px;
 }
+.v0 {
+  width: 15px;
+  height: 15px;
+}
+.v1 {
+  width: 25px;
+  height: 25px;
+}
 .v2{
-    width: 40px;
+  width: 40px;
   height: 40px;
 }
 .v3{
