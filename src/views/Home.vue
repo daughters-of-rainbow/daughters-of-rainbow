@@ -1,143 +1,144 @@
 <template>
-    <div :class="$vuetify.breakpoint.mobile ? 'h5-page' : 'pc-page pt-5'">
-        <v-row :class="$vuetify.breakpoint.mobile ? 'mx-2 mt-6' : 'ml-2'">
-            <v-col cols="12" md="3">
-                <div v-if="$vuetify.breakpoint.mobile" class="d-flex justfiy-around">
-                    <div>
-                        <v-btn href="https://discord.gg/7dbgB5jDvE" outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-discord"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn href="https://www.instagram.com/daughtersofrainbownft/" outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-instargram"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-twitter"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-opensea"></svg-icon>
-                        </v-btn>
-                    </div>
-                </div>
-                <div v-else class="d-flex justfiy-around">
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-discord"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-instargram"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-twitter"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-opensea"></svg-icon>
-                        </v-btn>
-                    </div>
-                </div>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-col cols="12" md="2">
-                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'ml-3'">
-                    <v-btn
-                        height="60px"
-                        :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
-                        block
-                        class="text-capitalize"
-                        dark
-                        x-large
-                        color="rgb( 255 46 115)"
-                    >
-                        <div v-if="!local_address">
-                            <v-icon large>mdi-wallet-outline </v-icon>
-                            Connect Wallet
-                        </div>
-                        <div v-else>{{ local_address.substring(0, 6) }}***{{ local_address.substring(35) }}</div>
-                    </v-btn>
-                </div>
-            </v-col>
-        </v-row>
-
+    <div :class="$vuetify.breakpoint.mobile ? 'h5-page' : 'pc-page'">
         <v-row>
-            <v-col cols="2" md="2"> </v-col>
             <v-col cols="12">
-                <v-container>
-                    <v-row class="px-4 pb-6">
-                        <v-col cols="12" md="6">
-                            <div class="mang">
-                                <v-img src="../assets/blindBox.png"></v-img>
-                            </div>
-                        </v-col>
-                        <v-col cols="12" md="6">
-                            <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'mx-7 mt-10 px-5'">
-                                <v-row
-                                    v-if="false"
-                                    class="countDown mt-5 font-weight-bold"
-                                    :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
-                                >
-                                    <v-col class="timeC">2</v-col>
-                                    <v-col>:</v-col>
-                                    <v-col class="timeC">0</v-col>
-                                    <v-col>:</v-col>
-                                    <v-col class="timeC">45</v-col>
-                                    <v-col>:</v-col>
-                                    <v-col>35</v-col>
-                                </v-row>
-                                <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
-                                    <v-col class="px-0">
-                                        <v-card v-if="false" class="operateBtn" color="#AA99EA">
-                                            <v-row justify="center" style="overflow: hidden; max-height: 72px">
-                                                <v-col class="star text-center" cols="2">
-                                                    <v-icon size="30" color="#4b3983">mdi-star</v-icon>
-                                                </v-col>
-                                                <v-col @click="mintNft" cols="7">
-                                                    <span style="color: #4b3983" class="text-h6"
-                                                        >MINT <span class="cfff"> for {{ salePrice }} ETH</span></span
-                                                    >
-                                                </v-col>
-                                                <v-col cols="3" class="pa-0" style="background-color: #fff">
-                                                    <div class="up" @click="buyNum += 1">
-                                                        <img src="../assets/arrowTop.png" alt="" />
-                                                    </div>
-                                                    <div class="inputNum">{{ buyNum }}</div>
-                                                    <div class="up" @click="buyNum > 0 ? (buyNum -= 1) : 0">
-                                                        <img src="../assets/arrowDown.png" alt="" />
-                                                    </div>
-                                                </v-col>
-                                            </v-row>
-                                        </v-card>
-                                        <v-img v-else src="../assets/btn_coming_soon.png"></v-img>
-                                    </v-col>
-                                </v-row>
-                                <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
-                                    <v-col class="px-0">
-                                        <div class="hasMinted">
-                                            <!-- <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted -->
-                                            <span>Phase I: XXX / 999 </span> DAUGHTERS Minted
+                <div class="sectionMint">
+                    <v-container class="header">
+                        <v-row :class="$vuetify.breakpoint.mobile ? 'mx-2 mt-6' : 'ml-2'">
+                            <v-col cols="12" md="2">
+                                <div v-if="$vuetify.breakpoint.mobile" class="d-flex justfiy-around socialList">
+                                    <div class="socialItem">
+                                        <v-btn href="https://discord.gg/7dbgB5jDvE" outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-discord"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://www.instagram.com/daughtersofrainbownft/" outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-instargram"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-twitter"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-opensea"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                <div v-else class="d-flex justfiy-around socialList">
+                                    <div class="socialItem">
+                                        <v-btn href="https://discord.gg/7dbgB5jDvE" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-discord"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://www.instagram.com/daughtersofrainbownft/" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-instargram"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-twitter"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-opensea"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </v-col>
+                            <v-spacer></v-spacer>
+                            <v-col cols="12" md="2" class="wallet">
+                                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'ml-3'">
+                                    <v-btn
+                                        :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
+                                        block
+                                        class="text-capitalize"
+                                        dark
+                                        x-large
+                                        color="rgb( 255 46 115)"
+                                    >
+                                        <div v-if="!local_address">
+                                            <v-icon large>mdi-wallet-outline </v-icon>
+                                            Connect Wallet
                                         </div>
-                                    </v-col>
-                                </v-row>
-                                <v-row class="deadLine">
-                                    <v-col class="px-0" :class="$vuetify.breakpoint.mobile ? '' : 'ft20'">
-                                        <div>Private Sale : 11th Oct 2021 10am UTC</div>
-                                        <div>Official Launch : 13th Oct 2021 10am UTC</div>
-                                    </v-col>
-                                </v-row>
-                            </div>
-                        </v-col>
-                    </v-row>
-                </v-container>
+                                        <div v-else>{{ local_address.substring(0, 6) }}***{{ local_address.substring(35) }}</div>
+                                    </v-btn>
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                    <v-container class="mint">
+                        <v-row class="px-4 pb-6">
+                            <v-col cols="12" md="6">
+                                <div class="mang">
+                                    <v-img src="../assets/blindBox.png"></v-img>
+                                </div>
+                            </v-col>
+                            <v-col cols="12" md="6">
+                                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'mx-7 mt-10 px-5'">
+                                    <v-row
+                                        v-if="false"
+                                        class="countDown mt-5 font-weight-bold"
+                                        :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
+                                    >
+                                        <v-col class="timeC">2</v-col>
+                                        <v-col>:</v-col>
+                                        <v-col class="timeC">0</v-col>
+                                        <v-col>:</v-col>
+                                        <v-col class="timeC">45</v-col>
+                                        <v-col>:</v-col>
+                                        <v-col>35</v-col>
+                                    </v-row>
+                                    <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
+                                        <v-col class="px-0">
+                                            <v-card v-if="false" class="operateBtn" color="#AA99EA">
+                                                <v-row justify="center" style="overflow: hidden; max-height: 72px">
+                                                    <v-col class="star text-center" cols="2">
+                                                        <v-icon size="30" color="#4b3983">mdi-star</v-icon>
+                                                    </v-col>
+                                                    <v-col @click="mintNft" cols="7">
+                                                        <span style="color: #4b3983" class="text-h6"
+                                                            >MINT <span class="cfff"> for {{ salePrice }} ETH</span></span
+                                                        >
+                                                    </v-col>
+                                                    <v-col cols="3" class="pa-0" style="background-color: #fff">
+                                                        <div class="up" @click="buyNum += 1">
+                                                            <img src="../assets/arrowTop.png" alt="" />
+                                                        </div>
+                                                        <div class="inputNum">{{ buyNum }}</div>
+                                                        <div class="up" @click="buyNum > 0 ? (buyNum -= 1) : 0">
+                                                            <img src="../assets/arrowDown.png" alt="" />
+                                                        </div>
+                                                    </v-col>
+                                                </v-row>
+                                            </v-card>
+                                            <v-img v-else src="../assets/btn_coming_soon.png"></v-img>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
+                                        <v-col class="px-0">
+                                            <div class="hasMinted">
+                                                <!-- <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted -->
+                                                <span>Phase I: XXX / 999 </span> DAUGHTERS Minted
+                                            </div>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row class="deadLine">
+                                        <v-col class="px-0" :class="$vuetify.breakpoint.mobile ? '' : 'ft20'">
+                                            <div>Private Sale : 11th Oct 2021 10am UTC</div>
+                                            <div>Official Launch : 13th Oct 2021 10am UTC</div>
+                                        </v-col>
+                                    </v-row>
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </div>
                 <v-img v-if="$vuetify.breakpoint.mobile" src="../assets/topH5Banner.png">
                     <div class="cfff px-3 text-center">
                         <p class="my-6 ft30">Daughters of Rainbow</p>
@@ -488,6 +489,52 @@
                                 <div class="crewInfo text-center mt-2">
                                     <h5 class="strc">- Normal Normalｘ Yankong -<br>The Creator</h5>
                                     <h6 class="cfff">An Artist couple in Taipei jointly brought DOR into life.</h6>
+                                    <div justify="center" class="crewMoreInfo mt-2">
+                                        <v-btn
+                                        dark
+                                        small
+                                        class="gradient-bg"
+                                        @click.stop="dialog = true"
+                                        >
+                                        More Info
+                                        </v-btn>
+
+                                        <v-dialog
+                                        v-model="dialog"
+                                        max-width="420"
+                                        >
+                                        <div
+                                        class="crewModal gradient-border flex-column py-6 px-3"
+                                        >
+                                        <!-- <v-img contain class="crewModal gradient-border flex-column py-6 px-3 white--text" src="../assets/crew-star.png"> -->
+                                            <div class="text-h5 text-center">
+                                                <p class="mb-5">Norman Normal</p><p class="mb-0">Yankong</p>
+                                            </div>
+                                            <v-card-text>
+                                                Norman specializes in using simple black and white to draw a "first impression" of people, while Yankong specializes in using color to express the "spontaneity" and "freedom" he sees in people.
+                                                For their first joint collaboration, they chose to use the rainbow to bring out the unique diversity and inclusiveness of the human soul.
+                                            </v-card-text>
+                                            <v-card-text class="crewLink">
+                                                <p class="mb-1">
+                                                    Norman Normal :
+                                                    <v-btn href="https://normannormal.art/" icon small class="website">
+                                                        <svg-icon className="v0" data_iconName="ic-website"></svg-icon>
+                                                    </v-btn>
+                                                    <v-btn href="https://www.instagram.com/norman.normal2/" icon small class="instagram">
+                                                        <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
+                                                    </v-btn>
+                                                </p>
+                                                <p class="mb-1">
+                                                    YanKong :
+                                                    <v-btn href="https://www.instagram.com/yankong2020/" icon small class="instagram">
+                                                        <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
+                                                    </v-btn>
+                                                </p>
+                                            </v-card-text>
+                                        <!-- </v-img> -->
+                                        </div>
+                                        </v-dialog>
+                                    </div>
                                 </div>
                             </v-img>
                         </v-col>
@@ -660,7 +707,8 @@ export default {
         },
         chainId: 0,
         nonce: 0,
-        masterAddr: ''
+        masterAddr: '',
+        dialog: false,
     }),
     created() {
         const fun = () => {
@@ -784,6 +832,7 @@ export default {
     animation: bg 20s linear infinite;
 }
 $bg-img: '../assets/h5Swiper.png';
+$bg-img-star: '../assets/star_bg.jpg';
 /* bg */
 #bg {
     transform: translate3d(0, 0, 0);
@@ -953,7 +1002,7 @@ $bg-img: '../assets/h5Swiper.png';
 .mang {
     position: relative;
     padding: 0 10px;
-    background: url('../assets/mang.png') no-repeat;
+    background: url('../assets/mang-2.png') no-repeat;
     background-size: 100% 100%;
 }
 .countDown {
@@ -1080,6 +1129,36 @@ $bg-img: '../assets/h5Swiper.png';
 }
 
 // * add
+.pc-page .container:not(.header) {
+    max-width: 1350px;
+}
+.sectionMint {
+    background: url('../assets/star_bg.png') no-repeat;
+    background-size: cover;
+    background-position-y: 30%;
+    width: 100%;
+    height: auto;
+    padding-top: 2%;
+    & .container.header {
+        width: 100%;
+        max-width: 100%;
+    }
+    & .mint {
+        padding: 8% 0;
+    }
+    & .wallet {
+        padding-right: 0;
+        & .v-btn {
+            padding: 6%;
+            height: auto;
+        }
+    }
+}
+.socialItem {
+    margin: 0 15px;
+}
+
+
 .sectionTitle {
     // font-size: 3rem;
     // font-family: "Eras ITC", "Eras Light ITC", sans-serif;
@@ -1112,6 +1191,11 @@ $bg-img: '../assets/h5Swiper.png';
     font-size: 12px;
     height: auto;
     padding: 5px 15px;
+}
+.crewModal {
+    background: url('../assets/star_bg.png') no-repeat;
+    background-size: 230%;
+    background-position: 92% 100%;
 }
 .crewModal .text-h5 p:first-child {
     position: relative;
