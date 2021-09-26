@@ -1,148 +1,149 @@
 <template>
-    <div :class="$vuetify.breakpoint.mobile ? 'h5-page' : 'pc-page pt-5'">
-        <v-row :class="$vuetify.breakpoint.mobile ? 'mx-2 mt-6' : 'ml-2'">
-            <v-col cols="12" md="3">
-                <div v-if="$vuetify.breakpoint.mobile" class="d-flex justfiy-around">
-                    <div>
-                        <v-btn href="https://discord.gg/7dbgB5jDvE" outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-discord"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn href="https://www.instagram.com/daughtersofrainbownft/" outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-instargram"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-twitter"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v2" data_iconName="ic-opensea"></svg-icon>
-                        </v-btn>
-                    </div>
-                </div>
-                <div v-else class="d-flex justfiy-around">
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-discord"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-instargram"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-twitter"></svg-icon>
-                        </v-btn>
-                    </div>
-                    <div>
-                        <v-btn outlined small fab>
-                            <svg-icon className="v4" data_iconName="ic-opensea"></svg-icon>
-                        </v-btn>
-                    </div>
-                </div>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-col cols="12" md="2">
-                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'ml-3'">
-                    <v-btn
-                        height="60px"
-                        :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
-                        block
-                        class="text-capitalize"
-                        dark
-                        x-large
-                        color="rgb( 255 46 115)"
-                    >
-                        <div v-if="!local_address">
-                            <v-icon large>mdi-wallet-outline </v-icon>
-                            Connect Wallet
-                        </div>
-                        <div v-else>{{ local_address.substring(0, 6) }}***{{ local_address.substring(35) }}</div>
-                    </v-btn>
-                </div>
-            </v-col>
-        </v-row>
-
+    <div :class="$vuetify.breakpoint.mobile ? 'h5-page' : 'pc-page'">
         <v-row>
-            <v-col cols="2" md="2"> </v-col>
             <v-col cols="12">
-                <v-container>
-                    <v-row class="px-4 pb-6">
-                        <v-col cols="12" md="6">
-                            <div class="mang">
-                                <v-img src="../assets/blindBox.png"></v-img>
-                            </div>
-                        </v-col>
-                        <v-col cols="12" md="6">
-                            <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'mx-7 mt-10 px-5'">
-                                <v-row
-                                    v-if="false"
-                                    class="countDown mt-5 font-weight-bold"
-                                    :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
-                                >
-                                    <v-col class="timeC">2</v-col>
-                                    <v-col>:</v-col>
-                                    <v-col class="timeC">0</v-col>
-                                    <v-col>:</v-col>
-                                    <v-col class="timeC">45</v-col>
-                                    <v-col>:</v-col>
-                                    <v-col>35</v-col>
-                                </v-row>
-                                <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
-                                    <v-col class="px-0">
-                                        <v-card v-if="true" class="operateBtn" color="#AA99EA">
-                                            <v-row justify="center" style="overflow: hidden; max-height: 72px">
-                                                <v-col class="star text-center" cols="2">
-                                                    <v-icon size="30" color="#4b3983">mdi-star</v-icon>
-                                                </v-col>
-                                                <v-col @click="mintNft" cols="7">
-                                                    <span style="color: #4b3983" class="text-h6"
-                                                        >MINT <span class="cfff"> for {{ salePrice }} ETH</span></span
-                                                    >
-                                                </v-col>
-                                                <v-col cols="3" class="pa-0" style="background-color: #fff">
-                                                    <div class="up" @click="buyNum += 1">
-                                                        <img src="../assets/arrowTop.png" alt="" />
-                                                    </div>
-                                                    <div class="inputNum">{{ buyNum }}</div>
-                                                    <div class="up" @click="buyNum > 0 ? (buyNum -= 1) : 0">
-                                                        <img src="../assets/arrowDown.png" alt="" />
-                                                    </div>
-                                                </v-col>
-                                            </v-row>
-                                        </v-card>
-                                        <v-img v-else src="../assets/btn_coming_soon.png"></v-img>
-                                    </v-col>
-                                </v-row>
-                                <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
-                                    <v-col class="px-0">
-                                        <div class="hasMinted">
-                                            <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted
+                <div class="sectionMint">
+                    <v-container class="header">
+                        <v-row :class="$vuetify.breakpoint.mobile ? 'mx-2' : 'ml-2'">
+                            <v-col cols="12" md="2">
+                                <div v-if="$vuetify.breakpoint.mobile" class="d-flex justfiy-around socialList">
+                                    <div class="socialItem">
+                                        <v-btn href="https://discord.gg/7dbgB5jDvE" outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-discord"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://www.instagram.com/daughtersofrainbownft/" outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-instargram"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-twitter"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn outlined small fab>
+                                            <svg-icon className="v2" data_iconName="ic-opensea"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                <div v-else class="d-flex justfiy-around socialList">
+                                    <div class="socialItem">
+                                        <v-btn href="https://discord.gg/7dbgB5jDvE" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-discord"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://www.instagram.com/daughtersofrainbownft/" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-instargram"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-twitter"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                    <div class="socialItem">
+                                        <v-btn href="https://twitter.com/dorlovenft" outlined small fab>
+                                            <svg-icon className="v4" data_iconName="ic-opensea"></svg-icon>
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </v-col>
+                            <v-spacer></v-spacer>
+                            <v-col cols="12" md="2" class="wallet" :class="$vuetify.breakpoint.mobile ? 'mr-8' : ''">
+                                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'ml-3'">
+                                    <v-btn
+                                        :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
+                                        block
+                                        class="text-capitalize"
+                                        dark
+                                        x-large
+                                    >
+                                        <div v-if="!local_address">
+                                            <v-icon large>mdi-wallet-outline </v-icon>
+                                            Connect Wallet
                                         </div>
-                                    </v-col>
-                                </v-row>
-                                <v-row class="deadLine">
-                                    <v-col class="px-0" :class="$vuetify.breakpoint.mobile ? '' : 'ft20'">
-                                        <div>Private Sale : 11th Oct 2021 10am UTC</div>
-                                        <div>Official Launch : 13th Oct 2021 10am UTC</div>
-                                    </v-col>
-                                </v-row>
-                            </div>
-                        </v-col>
-                    </v-row>
-                </v-container>
+                                        <div v-else>{{ local_address.substring(0, 6) }}***{{ local_address.substring(35) }}</div>
+                                    </v-btn>
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                    <v-container class="mint">
+                        <v-row class="px-4 pb-6">
+                            <v-col cols="12" md="6">
+                                <div class="mang glow">
+                                    <v-img src="../assets/blindBox.png"></v-img>
+                                </div>
+                            </v-col>
+                            <v-col cols="12" md="6">
+                                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'mx-7 mt-10 px-5'">
+                                    <v-row
+                                        v-if="false"
+                                        class="countDown mt-5 font-weight-bold"
+                                        :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
+                                    >
+                                        <v-col class="timeC">2</v-col>
+                                        <v-col>:</v-col>
+                                        <v-col class="timeC">0</v-col>
+                                        <v-col>:</v-col>
+                                        <v-col class="timeC">45</v-col>
+                                        <v-col>:</v-col>
+                                        <v-col>35</v-col>
+                                    </v-row>
+                                    <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
+                                        <v-col class="px-0">
+                                            <v-card v-if="false" class="operateBtn" color="#AA99EA">
+                                                <v-row justify="center" style="overflow: hidden; max-height: 72px">
+                                                    <v-col class="star text-center" cols="2">
+                                                        <v-icon size="30" color="#4b3983">mdi-star</v-icon>
+                                                    </v-col>
+                                                    <v-col @click="mintNft" cols="7">
+                                                        <span style="color: #4b3983" class="text-h6"
+                                                            >MINT <span class="cfff"> for {{ salePrice }} ETH</span></span
+                                                        >
+                                                    </v-col>
+                                                    <v-col cols="3" class="pa-0" style="background-color: #fff">
+                                                        <div class="up" @click="buyNum += 1">
+                                                            <img src="../assets/arrowTop.png" alt="" />
+                                                        </div>
+                                                        <div class="inputNum">{{ buyNum }}</div>
+                                                        <div class="up" @click="buyNum > 0 ? (buyNum -= 1) : 0">
+                                                            <img src="../assets/arrowDown.png" alt="" />
+                                                        </div>
+                                                    </v-col>
+                                                </v-row>
+                                            </v-card>
+                                            <v-img class="mintBtn" v-else src="../assets/btn_coming_soon.png"></v-img>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
+                                        <v-col class="px-0">
+                                            <div class="hasMinted">
+                                                <!-- <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted -->
+                                                <span>Phase I : XXX / 999 </span> DAUGHTERS Minted
+                                            </div>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row class="deadLine">
+                                        <v-col class="px-0" :class="$vuetify.breakpoint.mobile ? '' : 'ft20'">
+                                            <div>Private Sale : 11th Oct 2021 10am UTC</div>
+                                            <div>Official Launch : 13th Oct 2021 10am UTC</div>
+                                        </v-col>
+                                    </v-row>
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </div>
                 <v-img v-if="$vuetify.breakpoint.mobile" src="../assets/topH5Banner.png">
-                    <div class="cfff px-3 text-center">
-                        <p class="my-6 ft30">Daughters of Rainbow</p>
+                    <div class="cfff px-3 text-center container">
+                        <p class="my-6 ft30 dorTitle">Daughters of Rainbow</p>
                         <p class="ft20 ftw">1,523 Daughters of Rainbow</p>
                         <p class="ftw mb-0">Minted on the Ethereum Blockchain</p>
-                        <div class="ft14 mt-1 ftw l12 m0a">
+                        <div class="infoC ft14 mt-1 ftw l12 m0a">
                             The Daughters of Rainbow is a 1,523-piece NFT project; the collaborative creative effort from an artist couple.
                             One artist hand-painted 30 original daughters from portrait profiles collected from the streets of New York. The
                             other then created 1,523 daughters in digital media art form -- each with its own distinct style.
@@ -150,7 +151,7 @@
                         <p class="mt-10 ft20 ftw">
                             <svg-icon className="logo_icon middle_svg" data_iconName="ic-rainbow"></svg-icon> Rainbow Essence
                         </p>
-                        <div class="mt-2 ft14 ftw l12 m0a">
+                        <div class="infoC mt-2 ft14 ftw l12 m0a">
                             The concept of the Daughters of Rainbow is anchored in the Rainbow Sea, which exists at the source of the
                             Universe. All answers related to humans flow through the Rainbow Sea and manifest in the form of rainbow light.
                             The artist hopes that NFTs in different forms can become virtual containers that capture this light -- the
@@ -163,8 +164,8 @@
                     <v-row>
                         <v-col></v-col>
                         <v-col cols="8">
-                            <div class="infoC text-center">
-                                <p class="my-16" style="font-size: 80px">Daughters of Rainbow</p>
+                            <div class="infoC text-center container">
+                                <p class="my-16 dorTitle" style="font-size: 80px">Daughters of Rainbow</p>
                                 <p class="text-h4">1,523 Daughters of Rainbow</p>
                                 <p class="text-h5 ftw">Minted on the Ethereum Blockchain</p>
                                 <div class="ft20 mt-6 mb-6 m0a" style="max-width: 1500px">
@@ -194,9 +195,9 @@
                         <v-col></v-col>
                     </v-row>
                 </v-img>
-                <div class="my-6 text-center m0a">
+                <div class="text-center m0a sectionLaunch">
                     <div class="infoC m0a" style="max-width: 1500px">
-                        <p :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h3'" class="mt16 text-center">
+                        <p :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h3'" class="mt16 text-center sectionTitle">
                             <svg-icon
                                 v-if="$vuetify.breakpoint.mobile"
                                 className="logo_icon middle_svg mr-1"
@@ -206,7 +207,7 @@
                             Launch Plan
                         </p>
                         <v-row>
-                            <v-col></v-col>
+                            <v-col v-if="!$vuetify.breakpoint.mobile"></v-col>
                             <v-col :cols="$vuetify.breakpoint.mobile ? 12 : 8">
                                 <p :class="$vuetify.breakpoint.mobile ? '' : 'ft20'">
                                     There will be 1,523 Daughters of Rainbow NFT in phase I collection. Each cost the flat rate of 0.05 ETH.
@@ -215,7 +216,7 @@
                                     Private-sale whitelist and get updates.
                                 </p>
                             </v-col>
-                            <v-col></v-col>
+                            <v-col v-if="!$vuetify.breakpoint.mobile"></v-col>
                         </v-row>
                     </div>
                 </div>
@@ -223,37 +224,162 @@
                     <div id="bg" ref="bg" :style="bgStyle" class="animation" />
                 </div>
                 <v-img v-if="$vuetify.breakpoint.mobile" src="../assets/h5Color.png">
-                    <div class="my-12">
-                        <h1 class="text-center mx-10 cfff">
-                            <svg-icon
-                                v-if="$vuetify.breakpoint.mobile"
-                                className="logo_icon middle_svg mr-1"
-                                data_iconName="ic-roadmap"
-                            ></svg-icon>
-                            <svg-icon v-else className=" middle_svg" data_iconName="ic-roadmap"></svg-icon>
-                            Roadmap
+                    <v-container>
+                        <div class="my-12">
+                            <h1 class="text-center mx-10 cfff sectionTitle">
+                                <svg-icon
+                                    v-if="$vuetify.breakpoint.mobile"
+                                    className="logo_icon middle_svg mr-1"
+                                    data_iconName="ic-roadmap"
+                                ></svg-icon>
+                                <svg-icon v-else className=" middle_svg" data_iconName="ic-roadmap"></svg-icon>
+                                Roadmap
+                            </h1>
+                            <h4 class="d-flex mx-3 mb-4">
+                                <div><img style="width: 41px" class="mr-2 mt-4 middle" src="../assets/diamand.png" /></div>
+                                <div class="pt-4 cfff">
+                                    <span class="strc ft20">Phase I ：1,523</span> DAUGHTERS at 0.05 ETH/ piece (Blind-box)
+                                </div>
+                            </h4>
+                            <v-row justify="center" class="align-center mx-3">
+                                <v-col>
+                                    <v-img contain width="400px" class="m0a" src="../assets/glass.png">
+                                        <v-img contain class="mt-10" src="../assets/mBoxPc.png"></v-img>
+                                    </v-img>
+                                </v-col>
+                                <v-col>
+                                    <div class="cfff ftw">
+                                        <div class="d-flex">
+                                            <div class="mr-1">
+                                                <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
+                                            </div>
+                                            <div>
+                                                Sell out 30% : Unlocks Daughters of Alien series on Opensea ( 44 pieces with 0.07 ETH/ piece)
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="mr-1">
+                                                <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
+                                            </div>
+                                            <div>Sell out 50%: Unlocks reward airdrop plan ( details to be announced on discord/twitter)</div>
+                                        </div>
+                                        <div class="ml-7">
+                                            - Holders of 5: receive a silver grade mix-n-match Daughters ( total 5 designs with 10pc/each)
+                                            <br />
+                                            - Holders of 10: receive a gold grade mix-n-match Daughters ( total 10 designs with 5 pc/each)<br />
+                                            - Holders of 20: receive a rainbow grade mix-n-match Daughters (total 5 animated designs with 1
+                                            pc/each)<br />
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="mr-1">
+                                                <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
+                                            </div>
+                                            <div>Sell out 100%: Unlock Phase II rare Daughters</div>
+                                        </div>
+                                        <div class="ml-7">
+                                            - Holders of 3 will receive an e-Bible of Daughter’s family ( details will be announced on
+                                            discord/twitter)
+                                        </div>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                            <v-divider style="border-color: #fff" dark class="my-10 mx-5 cfff"></v-divider>
+                            <h4 class="d-flex pcFlexC mx-3 mb-4">
+                                <div><img style="width: 41px" class="mr-2 middle" src="../assets/diamand_2.png" /></div>
+                                <div class="cfff">
+                                    <span class="strc ft20">Phase II：450</span> Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)
+                                </div>
+                            </h4>
+                            <v-row justify="center" class="align-center mx-3">
+                                <v-col>
+                                    <v-img contain width="400px" class="m0a" src="../assets/glass.png">
+                                        <v-img contain class="mboxH5" src="../assets/pic02.png"></v-img>
+                                    </v-img>
+                                </v-col>
+                                <v-col>
+                                    <div class="cfff ftw">
+                                        <div class="d-flex">
+                                            <div class="mr-1">
+                                                <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
+                                            </div>
+                                            <div>30 unique animated daughters with 15 copies of each one</div>
+                                        </div>
+
+                                        <div class="ml-7">
+                                            - They will be listed directly on Opensea <br />
+                                            - Holders of 3 will get mix-n-match daughter with random rarity ( details to be announced on
+                                            discord/twitter)<br />
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="mr-1">
+                                                <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
+                                            </div>
+                                            <div>Sell out 100%: Unlock Phase III</div>
+                                        </div>
+                                        <div class="ml-7">
+                                            - 5% of sales profit will be donated to a charity fund supporting young artists and unlock Phase III
+                                        </div>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                            <v-divider style="border-color: #fff" dark class="my-10 mx-5 cfff"></v-divider>
+                            <h4 class="d-flex pcFlexC mx-3 mb-4">
+                                <div><img style="width: 41px" class="mr-2 middle" src="../assets/diamand_3.png" /></div>
+                                <div class="cfff">
+                                    <span class="strc ft20">Phase III：30</span> pieces of MOTHER who created DAUGHTERS(On Opensea)
+                                </div>
+                            </h4>
+                            <v-row justify="center" class="align-center mx-3">
+                                <v-col>
+                                    <v-img contain max-width="400px" class="m0a" src="../assets/glass.png">
+                                        <v-img contain class="mboxH5" src="../assets/pic03.png"></v-img>
+                                    </v-img>
+                                </v-col>
+                                <v-col>
+                                    <div class="cfff ftw">
+                                        <div class="d-flex">
+                                            <div class="mr-1">
+                                                <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
+                                            </div>
+                                            <div>3 super rare MOTHER portraits with 10 copies each</div>
+                                        </div>
+                                        <div class="ml-7">
+                                            - Auction: Bidding price <br />
+                                            - They will be listed directly on Opensea<br />
+                                            - Each holder of mother will receive a 3D version of artwork ( details to be announced on
+                                            discord/twitter) <br />
+                                            - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards.
+                                        </div>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                        </div>
+                    </v-container>
+                </v-img>
+                <v-img class="px-16 pb-10" max-height="2100" v-else src="../assets/pcColor.png">
+                    <v-container>
+                        <h1 :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h3'" class="text-center mt-10 cfff sectionTitle">
+                            <svg-icon className="v2 middle_svg" data_iconName="ic-roadmap"></svg-icon> Roadmap
                         </h1>
-                        <h4 class="d-flex mx-3 mb-4">
-                            <div><img style="width: 41px" class="mr-2 mt-4 middle" src="../assets/diamand.png" /></div>
-                            <div class="pt-4 cfff">
-                                <span class="strc ft20">Phase I ：1,523</span> DAUGHTERS at 0.05 ETH/ piece (Blind-box)
+                        <h3 class="d-flex pcFlexC mb-4">
+                            <div><img style="width: 50px" class="middle mr-2" src="../assets/diamand.png" /></div>
+                            <div class="cfff">
+                                <span class="strc ft30">Phase I ：1,523</span> <span class="ft24">DAUGHTERS at 0.05 ETH/ piece (Blind-box)</span>
                             </div>
-                        </h4>
-                        <v-row justify="center" class="align-center mx-3">
+                        </h3>
+                        <v-row justify="center" class="align-center roadmapiItem">
                             <v-col>
                                 <v-img contain width="400px" class="m0a" src="../assets/glass.png">
                                     <v-img contain class="mt-10" src="../assets/mBoxPc.png"></v-img>
                                 </v-img>
                             </v-col>
                             <v-col>
-                                <div class="cfff ftw">
+                                <h2 class="cfff">
                                     <div class="d-flex">
                                         <div class="mr-1">
                                             <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
                                         </div>
-                                        <div>
-                                            Sell out 30% : Unlocks Daughters of Alien series on Opensea ( 44 pieces with 0.07 ETH/ piece)
-                                        </div>
+                                        <div>Sell out 30% : Unlocks Daughters of Alien series on Opensea ( 44 pieces with 0.07 ETH/ piece)</div>
                                     </div>
                                     <div class="d-flex">
                                         <div class="mr-1">
@@ -262,8 +388,7 @@
                                         <div>Sell out 50%: Unlocks reward airdrop plan ( details to be announced on discord/twitter)</div>
                                     </div>
                                     <div class="ml-7">
-                                        - Holders of 5: receive a silver grade mix-n-match Daughters ( total 5 designs with 10pc/each)
-                                        <br />
+                                        - Holders of 5: receive a silver grade mix-n-match Daughters ( total 5 designs with 10pc/each) <br />
                                         - Holders of 10: receive a gold grade mix-n-match Daughters ( total 10 designs with 5 pc/each)<br />
                                         - Holders of 20: receive a rainbow grade mix-n-match Daughters (total 5 animated designs with 1
                                         pc/each)<br />
@@ -278,31 +403,30 @@
                                         - Holders of 3 will receive an e-Bible of Daughter’s family ( details will be announced on
                                         discord/twitter)
                                     </div>
-                                </div>
+                                </h2>
                             </v-col>
                         </v-row>
                         <v-divider style="border-color: #fff" dark class="my-10 mx-5 cfff"></v-divider>
-                        <h4 class="d-flex pcFlexC mx-3 mb-4">
-                            <div><img style="width: 41px" class="mr-2 middle" src="../assets/diamand_2.png" /></div>
+                        <h3 class="d-flex pcFlexC mb-4">
+                            <div><img style="width: 50px" class="middle mr-2" src="../assets/diamand_2.png" /></div>
                             <div class="cfff">
-                                <span class="strc ft20">Phase II：450</span> Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)
+                                <span class="strc ft30">Phase II：450</span> <span class="ft24">Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)</span>
                             </div>
-                        </h4>
-                        <v-row justify="center" class="align-center mx-3">
+                        </h3>
+                        <v-row justify="center" class="align-center roadmapiItem">
                             <v-col>
                                 <v-img contain width="400px" class="m0a" src="../assets/glass.png">
-                                    <v-img contain class="mboxH5" src="../assets/pic02.png"></v-img>
+                                    <v-img contain class="mboxPc" src="../assets/pic02.png"></v-img>
                                 </v-img>
                             </v-col>
                             <v-col>
-                                <div class="cfff ftw">
+                                <h2 class="cfff">
                                     <div class="d-flex">
                                         <div class="mr-1">
                                             <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
                                         </div>
                                         <div>30 unique animated daughters with 15 copies of each one</div>
                                     </div>
-
                                     <div class="ml-7">
                                         - They will be listed directly on Opensea <br />
                                         - Holders of 3 will get mix-n-match daughter with random rarity ( details to be announced on
@@ -317,24 +441,24 @@
                                     <div class="ml-7">
                                         - 5% of sales profit will be donated to a charity fund supporting young artists and unlock Phase III
                                     </div>
-                                </div>
+                                </h2>
                             </v-col>
                         </v-row>
                         <v-divider style="border-color: #fff" dark class="my-10 mx-5 cfff"></v-divider>
-                        <h4 class="d-flex pcFlexC mx-3 mb-4">
-                            <div><img style="width: 41px" class="mr-2 middle" src="../assets/diamand_3.png" /></div>
+                        <h3 class="d-flex pcFlexC mb-4">
+                            <div><img style="width: 50px" class="middle mr-2" src="../assets/diamand_3.png" /></div>
                             <div class="cfff">
-                                <span class="strc ft20">Phase III：30</span> pieces of MOTHER who created DAUGHTERS(On Opensea)
+                                <span class="strc ft30">Phase III：30</span> <span class="ft24">pieces of MOTHER who created DAUGHTERS(On Opensea)</span>
                             </div>
-                        </h4>
-                        <v-row justify="center" class="align-center mx-3">
+                        </h3>
+                        <v-row justify="center" class="align-center roadmapiItem">
                             <v-col>
                                 <v-img contain max-width="400px" class="m0a" src="../assets/glass.png">
-                                    <v-img contain class="mboxH5" src="../assets/pic03.png"></v-img>
+                                    <v-img contain class="mboxPc" src="../assets/pic03.png"></v-img>
                                 </v-img>
                             </v-col>
                             <v-col>
-                                <div class="cfff ftw">
+                                <h2 class="cfff">
                                     <div class="d-flex">
                                         <div class="mr-1">
                                             <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
@@ -348,202 +472,81 @@
                                         discord/twitter) <br />
                                         - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards.
                                     </div>
-                                </div>
+                                </h2>
                             </v-col>
                         </v-row>
-                    </div>
+                    </v-container>
                 </v-img>
-                <v-img class="px-16 pb-10" max-height="2500" v-else src="../assets/pcColor.png">
-                    <h1 :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h3'" class="text-center mt-10 cfff">
-                        <svg-icon className="v2 middle_svg" data_iconName="ic-roadmap"></svg-icon> Roadmap
-                    </h1>
-                    <h3 class="d-flex pcFlexC mb-4">
-                        <div><img style="width: 81px" class="middle mr-2" src="../assets/diamand.png" /></div>
-                        <div class="cfff"><span class="strc ft30">Phase I ：1,523</span> DAUGHTERS at 0.05 ETH/ piece (Blind-box)</div>
-                    </h3>
-                    <v-row justify="center" class="align-center">
-                        <v-col>
-                            <v-img contain width="400px" class="m0a" src="../assets/glass.png">
-                                <v-img contain class="mt-10" src="../assets/mBoxPc.png"></v-img>
-                            </v-img>
-                        </v-col>
-                        <v-col>
-                            <h2 class="cfff">
-                                <div class="d-flex">
-                                    <div class="mr-1">
-                                        <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                    </div>
-                                    <div>Sell out 30% : Unlocks Daughters of Alien series on Opensea ( 44 pieces with 0.07 ETH/ piece)</div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="mr-1">
-                                        <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                    </div>
-                                    <div>Sell out 50%: Unlocks reward airdrop plan ( details to be announced on discord/twitter)</div>
-                                </div>
-                                <div class="ml-7">
-                                    - Holders of 5: receive a silver grade mix-n-match Daughters ( total 5 designs with 10pc/each) <br />
-                                    - Holders of 10: receive a gold grade mix-n-match Daughters ( total 10 designs with 5 pc/each)<br />
-                                    - Holders of 20: receive a rainbow grade mix-n-match Daughters (total 5 animated designs with 1
-                                    pc/each)<br />
-                                </div>
-                                <div class="d-flex">
-                                    <div class="mr-1">
-                                        <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                    </div>
-                                    <div>Sell out 100%: Unlock Phase II rare Daughters</div>
-                                </div>
-                                <div class="ml-7">
-                                    - Holders of 3 will receive an e-Bible of Daughter’s family ( details will be announced on
-                                    discord/twitter)
-                                </div>
-                            </h2>
-                        </v-col>
-                    </v-row>
-                    <v-divider style="border-color: #fff" dark class="my-10 mx-5 cfff"></v-divider>
-                    <h3 class="d-flex pcFlexC mb-4">
-                        <div><img style="width: 81px" class="middle mr-2" src="../assets/diamand_2.png" /></div>
-                        <div class="cfff">
-                            <span class="strc ft30">Phase II：450</span> Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)
-                        </div>
-                    </h3>
-                    <v-row justify="center" class="align-center">
-                        <v-col>
-                            <v-img contain width="400px" class="m0a" src="../assets/glass.png">
-                                <v-img contain class="mboxPc" src="../assets/pic02.png"></v-img>
-                            </v-img>
-                        </v-col>
-                        <v-col>
-                            <h2 class="cfff">
-                                <div class="d-flex">
-                                    <div class="mr-1">
-                                        <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                    </div>
-                                    <div>30 unique animated daughters with 15 copies of each one</div>
-                                </div>
-                                <div class="ml-7">
-                                    - They will be listed directly on Opensea <br />
-                                    - Holders of 3 will get mix-n-match daughter with random rarity ( details to be announced on
-                                    discord/twitter)<br />
-                                </div>
-                                <div class="d-flex">
-                                    <div class="mr-1">
-                                        <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                    </div>
-                                    <div>Sell out 100%: Unlock Phase III</div>
-                                </div>
-                                <div class="ml-7">
-                                    - 5% of sales profit will be donated to a charity fund supporting young artists and unlock Phase III
-                                </div>
-                            </h2>
-                        </v-col>
-                    </v-row>
-                    <v-divider style="border-color: #fff" dark class="my-10 mx-5 cfff"></v-divider>
-                    <h3 class="d-flex pcFlexC mb-4">
-                        <div><img style="width: 81px" class="middle mr-2" src="../assets/diamand_3.png" /></div>
-                        <div class="cfff">
-                            <span class="strc ft30">Phase III：30</span> pieces of MOTHER who created DAUGHTERS(On Opensea)
-                        </div>
-                    </h3>
-                    <v-row justify="center" class="align-center">
-                        <v-col>
-                            <v-img contain max-width="400px" class="m0a" src="../assets/glass.png">
-                                <v-img contain class="mboxPc" src="../assets/pic03.png"></v-img>
-                            </v-img>
-                        </v-col>
-                        <v-col>
-                            <h2 class="cfff">
-                                <div class="d-flex">
-                                    <div class="mr-1">
-                                        <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                    </div>
-                                    <div>3 super rare MOTHER portraits with 10 copies each</div>
-                                </div>
-                                <div class="ml-7">
-                                    - Auction: Bidding price <br />
-                                    - They will be listed directly on Opensea<br />
-                                    - Each holder of mother will receive a 3D version of artwork ( details to be announced on
-                                    discord/twitter) <br />
-                                    - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards.
-                                </div>
-                            </h2>
-                        </v-col>
-                    </v-row>
-                </v-img>
-                <div>
-                    <p :class="$vuetify.breakpoint.mobile ? 'ft30' : 'text-h3 mt-10'" class="cfff my-3 text-center">
-                        <svg-icon
-                            v-if="$vuetify.breakpoint.mobile"
-                            className="logo_icon middle_svg mr-1"
-                            data_iconName="ic-crew"
-                        ></svg-icon>
-                        <svg-icon v-else className="v2 middle_svg" data_iconName="ic-crew"></svg-icon>
-                        Crew
-                    </p>
-                    <v-row no-gutters justify="space-around" :class="$vuetify.breakpoint.mobile ? 'ml-2' : ''">
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_4.png">
-                                    <v-img contain class="Mbox3" src="../assets/1.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">-NOR NOR, the Creator -</h5>
-                                        <h6 class="cfff">An illustration artist with exhibitions in TYO/OSA/TPE</h6>
+                <div class="sectionCrew">
+                    <v-container>
+                        <h3 :class="$vuetify.breakpoint.mobile ? 'ft30' : 'text-h3 mt-10'" class="cfff text-center sectionTitle">
+                            <svg-icon
+                                v-if="$vuetify.breakpoint.mobile"
+                                className="logo_icon middle_svg mr-1"
+                                data_iconName="ic-crew"
+                            ></svg-icon>
+                            <svg-icon v-else className="v2 middle_svg" data_iconName="ic-crew"></svg-icon>
+                            Crew
+                        </h3>
+                        <v-row no-gutters justify="space-around">
+                            <v-col cols="6" md="3" class="crewItem">
+                                <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                    <v-img contain class="Mbox3" src="../assets/crew-1.png"></v-img>
+                                    <div class="crewInfo text-center mt-2">
+                                        <h5 class="strc">- Normal Normalｘ Yankong -<br>The Creator</h5>
+                                        <h6 class="cfff">An Artist couple in Taipei jointly brought DOR into life.</h6>
                                     </div>
                                 </v-img>
-                            </div>
-                        </v-col>
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_3.png">
-                                    <v-img contain class="Mbox3" src="../assets/8.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">-ODEM T,the Evangelist-</h5>
-                                        <h6 class="cfff">Founder of SPARK!. Internet Marketing/Social community expert</h6>
+                            </v-col>
+                            <v-col cols="6" md="3" class="crewItem">
+                                <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                    <v-img contain class="Mbox3" src="../assets/crew-2.png"></v-img>
+                                    <div class="crewInfo text-center mt-2">
+                                        <h5 class="strc">- ODEM T -<br>The Evangelist</h5>
+                                        <h6 class="cfff">Founder of SPARK!. Internet Marketing. Social community expert.</h6>
                                     </div>
                                 </v-img>
-                            </div>
-                        </v-col>
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_3.png">
-                                    <v-img contain class="Mbox3" src="../assets/19.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">- A C, the Enthusiast -</h5>
+                            </v-col>
+                            <v-col cols="6" md="3" class="crewItem">
+                                <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                    <v-img contain class="Mbox3" src="../assets/crew-3.png"></v-img>
+                                    <div class="crewInfo text-center mt-2">
+                                        <h5 class="strc">- A C -<br>The Enthusiast </h5>
                                         <h6 class="cfff">Co-Founder of SPARK!. Marketing professional. Crypto Investor.</h6>
                                     </div>
                                 </v-img>
-                            </div>
-                        </v-col>
-                        <v-col cols="6" md="3">
-                            <div>
-                                <v-img :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" contain src="../assets/glass_3.png">
-                                    <v-img contain class="Mbox3" src="../assets/22.png"></v-img>
-                                    <div class="text-center mx-4 mt-2">
-                                        <h5 class="strc">- H,the Alchemist -</h5>
-                                        <h6 class="cfff">Digital Art/ Developer</h6>
+                            </v-col>
+                            <v-col cols="6" md="3" class="crewItem">
+                                <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
+                                    <v-img contain class="Mbox3" src="../assets/crew-4.png"></v-img>
+                                    <div class="crewInfo text-center mt-2">
+                                        <h5 class="strc">- H H -<br>The Alchemist</h5>
+                                        <h6 class="cfff">Digital Artist and Web Developer. Love creativity and programming.</h6>
                                     </div>
                                 </v-img>
-                            </div>
-                        </v-col>
-                    </v-row>
+                            </v-col>
+                        </v-row>
+                    </v-container>
                 </div>
-                <div>
-                    <h3 class="cfff my-3 text-center">
-                        <svg-icon v-if="$vuetify.breakpoint.mobile" className="logo_icon middle_svg mr-1" data_iconName="ic-faq"></svg-icon>
-                        <svg-icon v-else className="v2 middle_svg" data_iconName="ic-faq"></svg-icon>
-                        FREQUENTLY ASKED QUESTIONS
-                    </h3>
-                    <div :class="$vuetify.breakpoint.mobile ? '' : 'ma-16'">
-                        <div v-for="(item, index) in quesList" :key="index">
-                            <div class="ques">
-                                <i></i>
-                                <div>{{ item.ques }}</div>
-                            </div>
-                            <div class="answer ftw" :class="$vuetify.breakpoint.mobile ? '' : 'answerBorder'">
-                                <div v-html="item.answer"></div>
+                <div class="sectionFAQ">
+                    <v-container>
+                        <h3 :class="$vuetify.breakpoint.mobile ? 'ft30' : 'text-h3 mt-10'" class="cfff text-center sectionTitle">
+                            <svg-icon v-if="$vuetify.breakpoint.mobile" className="logo_icon middle_svg mr-1" data_iconName="ic-faq"></svg-icon>
+                            <svg-icon v-else className="v2 middle_svg" data_iconName="ic-faq"></svg-icon>
+                            FREQUENTLY ASKED QUESTIONS
+                        </h3>
+                        <div :class="$vuetify.breakpoint.mobile ? 'ma-3' : ''">
+                            <div v-for="(item, index) in quesList" :key="index">
+                                <div class="ques">
+                                    <i></i>
+                                    <div>{{ item.ques }}</div>
+                                </div>
+                                <div class="answer ftw" :class="$vuetify.breakpoint.mobile ? '' : 'answerBorder'">
+                                    <div v-html="item.answer"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </v-container>
                 </div>
                 <div v-if="!$vuetify.breakpoint.mobile" class="rightIcon">
                     <img src="../assets/planet.png" alt="" />
@@ -554,9 +557,8 @@
                     </v-btn>
                 </v-fab-transition>
             </v-col>
-            <v-col cols="2" md="2"> </v-col>
         </v-row>
-        <v-dialog   persistent  v-model="showDialog">
+        <!-- <v-dialog   persistent  v-model="showDialog">
             
                
         <div class="gradient-border">
@@ -582,7 +584,7 @@
             </div>
         </div>
             
-        </v-dialog>
+        </v-dialog> -->
     </div>
 </template>
 
@@ -688,31 +690,31 @@ export default {
     },
     async mounted() {
         window.addEventListener('scroll', this.handleScroll, true);
-        const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
-        this.local_address = address;
-        this.nonce = await provider.getTransactionCount(this.local_address);
-        console.info(this.nonce);
-        this.gasPrice = await provider.getGasPrice();
-        this.chainId = chainId;
-        let ethBalance = await provider.getBalance(address);
-        this.ethBalance = ethers.utils.formatEther(ethBalance);
-        this.tenetProvider = provider;
-        this.masterInstance = masterInstance;
-        this.masterAddr = masterAddr;
+    //     const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
+    //     this.local_address = address;
+    //     this.nonce = await provider.getTransactionCount(this.local_address);
+    //     console.info(this.nonce);
+    //     this.gasPrice = await provider.getGasPrice();
+    //     this.chainId = chainId;
+    //     let ethBalance = await provider.getBalance(address);
+    //     this.ethBalance = ethers.utils.formatEther(ethBalance);
+    //     this.tenetProvider = provider;
+    //     this.masterInstance = masterInstance;
+    //     this.masterAddr = masterAddr;
 
-        await this.initNftInfo();
-        //获取当前网络环境
-        let netInfo = await provider.getNetwork();
-        ethereum.on('chainChanged', (res) => {
-            if (parseInt(res) != 1) {
-                this.$toast({ text: 'current RPC node is ' + netInfo.name });
-                this.reload();
-            }
-        });
-        if (netInfo.name != 'homestead') {
-            this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
-        }
-        // const onboarding = new MetaMaskOnboarding();
+    //     await this.initNftInfo();
+    //     //获取当前网络环境
+    //     let netInfo = await provider.getNetwork();
+    //     ethereum.on('chainChanged', (res) => {
+    //         if (parseInt(res) != 1) {
+    //             this.$toast({ text: 'current RPC node is ' + netInfo.name });
+    //             this.reload();
+    //         }
+    //     });
+    //     if (netInfo.name != 'homestead') {
+    //         this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
+    //     }
+    //     // const onboarding = new MetaMaskOnboarding();
     },
     methods: {
         //初始化数据
@@ -806,12 +808,12 @@ $bg-img: '../assets/h5Swiper.png';
 .gradient-border {
     position: relative;
     display: flex;
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
     font-family: Lato, sans-serif;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     color: white;
     background: #222;
     border-radius: 15px;
@@ -833,11 +835,7 @@ $bg-img: '../assets/h5Swiper.png';
   animation: moveGradient 4s alternate infinite;
 }
 
-@keyframes moveGradient {
-  50% {
-    background-position: 100% 50%;
-  }
-}
+
 .h5-page {
     height: 100%;
     background: url('../assets/h5-bg.png') no-repeat;
@@ -847,16 +845,16 @@ $bg-img: '../assets/h5Swiper.png';
 .rightIcon {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: -10px;
 }
 .star {
     background-color: #6d5cb0;
 }
-.pc-page {
-    height: 100%;
-    background: url('../assets/bg.png') no-repeat;
-    background-size: cover;
-}
+// .pc-page {
+//     height: 100%;
+//     background: url('../assets/bg.png') no-repeat;
+//     background-size: cover;
+// }
 .justfiy-around {
     justify-content: space-between;
 }
@@ -964,7 +962,7 @@ $bg-img: '../assets/h5Swiper.png';
 .mang {
     position: relative;
     padding: 0 10px;
-    background: url('../assets/mang.png') no-repeat;
+    background: url('../assets/mang-2.png') no-repeat;
     background-size: 100% 100%;
 }
 .countDown {
@@ -1009,38 +1007,53 @@ $bg-img: '../assets/h5Swiper.png';
     line-height: 3;
 }
 .waiK {
-    width: 179px;
-    height: 336px;
+    // width: 179px;
+    // height: 336px;
+    width: 90%;
+    height: 90%;
+    min-height: 350px;
     margin: 0 auto;
     & .Mbox3 {
-        margin: 45px 0 0 10px;
-        width: 150px;
-        height: 160px;
+        // margin: 45px 0 0 10px;
+        // width: 150px;
+        // height: 160px;
+        margin: 10% auto 6% auto;
+        width: 70%;
+        height: auto;
     }
 }
 .waiKPc {
-    width: 289px;
-    height: 466px;
+    // width: 289px;
+    // height: 466px;
+    width: 90%;
+    height: auto;
+    min-height: 97%;
     margin: 0px auto;
     & .Mbox3 {
-        margin: 55px 0 0 10px;
-        width: 250px;
-        height: 280px;
+        // margin: 55px 0 0 10px;
+        // width: 250px;
+        // height: 280px;
+        margin: 40px auto 15px auto;
+        width: 70%;
+        height: auto;
     }
 }
 .ft30 {
     font-size: 30px;
 }
 .hasMinted {
-    height: 55px;
-    line-height: 50px;
+    // height: 55px;
+    // line-height: 50px;
+    line-height: 24px;
     text-align: center;
     border: 2px solid #b1b7ca;
     border-radius: 12px;
     font-weight: 800;
     font-size: 18px;
     color: #fff;
+    padding: 15px;
     & > span {
+        margin-right: 10px;
         color: #f44844;
     }
 }
@@ -1051,7 +1064,7 @@ $bg-img: '../assets/h5Swiper.png';
     text-align: center;
 }
 .infoC {
-    padding: 20px 20px;
+    padding: 0 20px;
     color: #fff;
     font-weight: 700;
     font-size: 14px;
@@ -1075,5 +1088,323 @@ $bg-img: '../assets/h5Swiper.png';
     width: 100%;
     min-height: 300px;
 }
+
+// * add
+#bg {
+    position: relative;
+}
+#bg::before {
+    content: "";
+    background: linear-gradient(0deg, rgb(179 25 80 / 50%), rgb(255 255 255 / 0%));
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: -2px;
+}
+.pc-page .container:not(.header) {
+    max-width: 1150px;
+}
+.sectionMint {
+    background: url('../assets/star_bg-mint.jpg') no-repeat;
+    background-size: cover;
+    background-position-y: 30%;
+    width: 100%;
+    height: auto;
+    padding-top: 2%;
+    & .container.header {
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+    & .mint {
+        padding: 8% 0;
+    }
+    & .wallet {
+        padding-right: 0;
+        & .v-btn {
+            background: linear-gradient(180deg, #b31950, #ff2e73);
+            padding: 6% 12%;
+            height: auto;
+        }
+    }
+    & .mintBtn {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.socialItem {
+    margin: 0 15px;
+}
+
+.sectionLaunch {
+    background: url('../assets/star_bg-plan.jpg') no-repeat;
+    background-size: cover;
+    background-position-y: 30%;
+    width: 100%;
+    height: auto;
+    padding: 4%;
+}
+
+.roadmapiItem > div:nth-child(1) {
+    margin: 10px;
+}
+.dorTitle {
+    font-family: "Eras ITC", "Eras Light ITC", sans-serif;
+    font-weight: bold;
+    margin-bottom: 5%;
+    // & svg {
+    //     margin-top: -12px;
+    // }
+}
+.sectionTitle {
+    font-weight: bold;
+    margin-bottom: 3%;
+    line-height: 2rem;
+    & svg {
+        margin-top: -12px;
+    }
+}
+.sectionCrew {
+    background: url('../assets/star_bg-crew.jpg') no-repeat;
+    background-size: cover;
+    background-position: 50% 100%;
+    width: 100%;
+    height: auto;
+    padding-bottom: 5%;
+    & .crewInfo {
+        margin: 0 15%;
+    }
+    & h5 {
+        line-height: 15px;
+        margin-bottom: 8px
+    }
+    & h6 {
+        line-height: 15px;
+    }
+}
+.crewItem {
+    // margin-bottom: 5%;
+}
+.crewMoreInfo button, 
+.crewMoreInfo a {
+    background: linear-gradient(340deg, #5f86f2, #a65ff2, #f25fd0);
+    font-size: 12px;
+    height: auto;
+    padding: 5px 15px;
+}
+.crewModal {
+    background: url('../assets/star_bg-mint.jpg') no-repeat;
+    background-size: 230%;
+    background-position: 92% 30%;
+}
+.crewDialog {
+    max-width: 800px;
+}
+.crewModal.gradient-border {
+    max-width: 800px;
+    padding: 6% 10%;
+}
+.crewModal .text-h5 p,
+.crewModal .v-card__text {
+    text-shadow: 1px 1px 3px #333;
+}
+.crewModal a {
+    text-shadow: none;
+}
+.crewModal .text-h5 p:first-child {
+    position: relative;
+}
+.crewModal .text-h5 p:first-child::before,
+.crewModal .text-h5 p:first-child::after {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    border-radius: 8px;
+}
+.crewModal .text-h5 p:first-child::before {
+    transform: translateX(-50%) rotateZ(45deg);
+}
+.crewModal .text-h5 p:first-child::after {
+    transform: translateX(-50%) rotateZ(-45deg);
+}
+
+.crewLink a {
+    position: relative;
+}
+.crewLink a::after {
+    content: "";
+    color: #333;
+    font-size: 12px;
+    padding: 0 5px;
+    position: absolute;
+    top: -15px;
+    z-index: 1000;
+    background: #fff;
+    transform: scale(0);
+    transition: .2s ease;
+}
+.crewLink a.website::after {
+    content: "website";
+}
+.crewLink a.instagram::after {
+    content: "instagram";
+}
+.crewLink a:hover::after {
+    transform: scale(.7);
+}
+
+.sectionFAQ {
+    background: url('../assets/star_bg-faq.jpg') no-repeat;
+    background-size: cover;
+    background-position: 50% 0%;
+    width: 100%;
+    height: auto;
+    padding-bottom: 10%;
+    margin-top: -2px;
+}
+@media screen and (min-width: 1025px) {
+    .crewModal .text-h5 p:first-child::before,
+    .crewModal .text-h5 p:first-child::after {
+        height: 2px;
+        bottom: -50%;
+    }
+    .crewModal .text-h5 p {
+        font-size: 2rem;
+        margin-bottom: 15%;
+    }
+    .crewModal .v-card__text {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .sectionCrew {
+        padding: 0 3%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .hasMinted {
+        & > span {
+            display: block;
+            margin-right: 0;
+        }
+    }
+    .sectionMint .mint {
+        padding: 12px;
+    }
+    .crewItem {
+        margin-bottom: 10%;
+    }
+    .waiK {
+        min-height: 105%;
+    }
+    .crewModal {
+        background-size: 350%;
+        background-position: 92% 80%;
+    }
+    .sectionTitle {
+        margin: 6% 0;
+    }
+    .sectionMint,
+    .sectionCrew,
+    .sectionFAQ {
+        background: none;
+    }
+    .h5-page {
+        padding-bottom: 25%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .crewModal {
+        background-size: 320%;
+        background-position: 30% 80%;
+    }
+}
+
+.glow,
+.glow > div {
+    position: relative;
+}
+.glow {
+    z-index: 0;
+}
+.glow > div {
+    z-index: 10;
+}
+.glow::before,
+.glow::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 100%;
+}
+.glow::before {
+    filter: blur(10vw);
+    background: rgb(191 160 255 / 70%);
+    animation: animateGlowWhite 3s alternate ease infinite;
+}
+.glow::after {
+    /* transform: scale(0.75); */
+    background: linear-gradient(270deg, #f172d0, #0043ff, #7e0fff, #f172d0, #0043ff, #7e0fff);
+    background-size: 200% 200%;
+    -webkit-animation: animateGlow 20s alternate ease infinite;
+    animation: animateGlow 20s alternate ease infinite;
+}
+@keyframes animateGlowWhite {
+    0% {
+        transform: scale(0.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes animateGlow {
+    0% {
+        background-position: 0% 50%;
+        filter: blur(10vw);
+        transform: rotate(0deg) scale(0.9);
+    }
+    30% {
+        background-position: 100% 50%;
+        filter: blur(5vw);
+        transform: rotate(180deg) scale(0.6);
+    }
+    50% {
+        background-position: 0% 50%;
+        filter: blur(13vw);
+        transform: rotate(0deg) scale(1.1);
+    }
+    70% {
+        background-position: 100% 50%;
+        filter: blur(8vw);
+        transform: rotate(180deg) scale(0.7);
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: blur(10vw);
+        transform: rotate(0deg) scale(0.9);
+    }
+}
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
 </style>
 
+<style>
+.sectionCrew .crewBackground > .v-image__image {
+    background-size: 100% 100%;
+}
+</style>
