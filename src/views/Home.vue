@@ -497,6 +497,51 @@
                                         <h6 class="cfff">An Artist couple in Taipei jointly brought DOR into life.</h6>
                                     </div>
                                 </v-img>
+                                <div justify="center" class="crewMoreInfo">
+                                    <div
+                                    @click.stop="dialog = true"
+                                    >
+                                        <svg-icon data_iconName="ic-more"></svg-icon>
+                                    </div>
+
+                                    <v-dialog
+                                    v-model="dialog"
+                                    max-width="800"
+                                    >
+                                        <div
+                                        class="crewModal gradient-border flex-column"
+                                        >
+                                            <div class="text-h5 text-center">
+                                                <p>Norman Normal</p><p>Yankong</p>
+                                            </div>
+                                            <div class="crewArtist d-flex flex-row mb-4">
+                                                <div :class="$vuetify.breakpoint.mobile ? 'ml-1 mr-2' : 'mx-4'">
+                                                    <img src="../assets/normannormal.jpg">
+                                                    <div class="crewLink">
+                                                        <v-btn href="https://normannormal.art/" icon small class="website">
+                                                            <svg-icon className="v0" data_iconName="ic-website"></svg-icon>
+                                                        </v-btn>
+                                                        <v-btn href="https://www.instagram.com/norman.normal2/" icon small class="instagram">
+                                                            <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
+                                                        </v-btn>
+                                                    </div>
+                                                </div>
+                                                <div :class="$vuetify.breakpoint.mobile ? 'mr-1 ml-2' : 'mx-4'">
+                                                    <img src="../assets/yankong.jpg">
+                                                    <div class="crewLink">
+                                                        <v-btn href="https://www.instagram.com/yankong2020/" icon small class="instagram">
+                                                            <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
+                                                        </v-btn>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <v-card-text>
+                                                An artist couple in Taipei jointly brought DOR into life. They chose to use the rainbow element to bring out the uniqueness and inclusiveness of the human soul in their first collaboration.
+                                            </v-card-text>
+                                            <div @click="dialog = false" class="dialogClose">×</div>
+                                        </div>
+                                    </v-dialog>
+                                </div>
                             </v-col>
                             <v-col cols="6" md="3" class="crewItem">
                                 <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
@@ -669,7 +714,8 @@ export default {
         },
         chainId: 0,
         nonce: 0,
-        masterAddr: ''
+        masterAddr: '',
+        dialog: false,
     }),
     created() {
         const fun = () => {
@@ -1185,33 +1231,70 @@ $bg-img: '../assets/h5Swiper.png';
     }
 }
 .crewItem {
-    // margin-bottom: 5%;
+    position: relative;
 }
-.crewMoreInfo button, 
-.crewMoreInfo a {
-    background: linear-gradient(340deg, #5f86f2, #a65ff2, #f25fd0);
-    font-size: 12px;
-    height: auto;
-    padding: 5px 15px;
+.crewItem > div {
+    transition: .2s ease;
+}
+.crewItem:first-child:hover > div{
+    background: rgb(0 0 0 / 30%);
+    transition: .2s ease;
+}
+.crewItem:hover .crewMoreInfo > div:first-child {
+    opacity: .5;
+    transition: .2s ease;
+}
+.crewMoreInfo {
+    display: inline-block;
+}
+.crewMoreInfo > div:first-child {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    cursor: pointer;
+    opacity: 0;
+    transition: .2s ease;
+}
+.crewItem .crewMoreInfo > div:first-child:hover {
+    opacity: .8;
+    transition: .2s ease;
+}
+.crewMoreInfo > div:first-child svg {
+    width: 20px;
+    height: 20px;
 }
 .crewModal {
-    background: url('../assets/star_bg-mint.jpg') no-repeat;
+    background: #000;
     background-size: 230%;
     background-position: 92% 30%;
+    text-align: center;
+    position: relative;
+}
+.crewModal .dialogClose {
+    position: absolute;
+    top: 0;
+    right: 2%;
+    background: linear-gradient( 
+80deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 25px;
+    min-width: auto;
+    cursor: pointer;
 }
 .crewDialog {
     max-width: 800px;
 }
 .crewModal.gradient-border {
     max-width: 800px;
-    padding: 6% 10%;
-}
-.crewModal .text-h5 p,
-.crewModal .v-card__text {
-    text-shadow: 1px 1px 3px #333;
+    padding: 6% 13%;
 }
 .crewModal a {
     text-shadow: none;
+}
+.crewModal .text-h5 p{
+    font-weight: 300;
 }
 .crewModal .text-h5 p:first-child {
     position: relative;
@@ -1233,7 +1316,9 @@ $bg-img: '../assets/h5Swiper.png';
 .crewModal .text-h5 p:first-child::after {
     transform: translateX(-50%) rotateZ(-45deg);
 }
-
+.crewArtist img{
+    width: 100%;
+}
 .crewLink a {
     position: relative;
 }
@@ -1243,7 +1328,7 @@ $bg-img: '../assets/h5Swiper.png';
     font-size: 12px;
     padding: 0 5px;
     position: absolute;
-    top: -15px;
+    bottom: -15px;
     z-index: 1000;
     background: #fff;
     transform: scale(0);
@@ -1306,6 +1391,25 @@ $bg-img: '../assets/h5Swiper.png';
     .crewModal {
         background-size: 350%;
         background-position: 92% 80%;
+    }
+    .crewModal.gradient-border {
+        padding: 6%;
+    }
+    .crewMoreInfo > div:first-child {
+        bottom: -3%;
+    }
+    .crewMoreInfo > div:first-child,
+    .crewItem:hover .crewMoreInfo > div:first-child {
+        opacity: .6;
+    }
+    .crewModal .v-card__text {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .crewModal .dialogClose {
+        top: -1px;
+        right: 3%;
+        font-size: 20px;
     }
     .sectionTitle {
         margin: 6% 0;
