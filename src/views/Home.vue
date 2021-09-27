@@ -496,52 +496,52 @@
                                         <h5 class="strc">- Normal Normalｘ Yankong -<br>The Creator</h5>
                                         <h6 class="cfff">An Artist couple in Taipei jointly brought DOR into life.</h6>
                                     </div>
-                                </v-img>
-                                <div justify="center" class="crewMoreInfo">
-                                    <div
-                                    @click.stop="dialog = true"
-                                    >
-                                        <svg-icon data_iconName="ic-more"></svg-icon>
-                                    </div>
-
-                                    <v-dialog
-                                    v-model="dialog"
-                                    max-width="800"
-                                    >
+                                    <div justify="center" class="crewMoreInfo">
                                         <div
-                                        class="crewModal gradient-border flex-column"
+                                        @click.stop="dialog = true"
                                         >
-                                            <div class="text-h5 text-center">
-                                                <p>Norman Normal</p><p>Yankong</p>
-                                            </div>
-                                            <div class="crewArtist d-flex flex-row mb-4">
-                                                <div :class="$vuetify.breakpoint.mobile ? 'ml-1 mr-2' : 'mx-4'">
-                                                    <img src="../assets/normannormal.jpg">
-                                                    <div class="crewLink">
-                                                        <v-btn href="https://normannormal.art/" icon small class="website">
-                                                            <svg-icon className="v0" data_iconName="ic-website"></svg-icon>
-                                                        </v-btn>
-                                                        <v-btn href="https://www.instagram.com/norman.normal2/" icon small class="instagram">
-                                                            <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
-                                                        </v-btn>
-                                                    </div>
-                                                </div>
-                                                <div :class="$vuetify.breakpoint.mobile ? 'mr-1 ml-2' : 'mx-4'">
-                                                    <img src="../assets/yankong.jpg">
-                                                    <div class="crewLink">
-                                                        <v-btn href="https://www.instagram.com/yankong2020/" icon small class="instagram">
-                                                            <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
-                                                        </v-btn>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <v-card-text>
-                                                An artist couple in Taipei jointly brought DOR into life. They chose to use the rainbow element to bring out the uniqueness and inclusiveness of the human soul in their first collaboration.
-                                            </v-card-text>
-                                            <div @click="dialog = false" class="dialogClose">×</div>
+                                            <svg-icon data_iconName="ic-more"></svg-icon>
                                         </div>
-                                    </v-dialog>
-                                </div>
+
+                                        <v-dialog
+                                        v-model="dialog"
+                                        max-width="800"
+                                        >
+                                            <div
+                                            class="crewModal gradient-border flex-column"
+                                            >
+                                                <div class="text-h5 text-center">
+                                                    <p>Norman Normal</p><p>Yankong</p>
+                                                </div>
+                                                <div class="crewArtist d-flex flex-row mb-4">
+                                                    <div :class="$vuetify.breakpoint.mobile ? 'ml-1 mr-2' : 'mx-4'">
+                                                        <img src="../assets/normannormal.jpg">
+                                                        <div class="crewLink">
+                                                            <v-btn href="https://normannormal.art/" icon small class="website">
+                                                                <svg-icon className="v0" data_iconName="ic-website"></svg-icon>
+                                                            </v-btn>
+                                                            <v-btn href="https://www.instagram.com/norman.normal2/" icon small class="instagram">
+                                                                <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
+                                                            </v-btn>
+                                                        </div>
+                                                    </div>
+                                                    <div :class="$vuetify.breakpoint.mobile ? 'mr-1 ml-2' : 'mx-4'">
+                                                        <img src="../assets/yankong.jpg">
+                                                        <div class="crewLink">
+                                                            <v-btn href="https://www.instagram.com/yankong2020/" icon small class="instagram">
+                                                                <svg-icon className="v0" data_iconName="ic-instagram-solid"></svg-icon>
+                                                            </v-btn>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <v-card-text>
+                                                    An artist couple in Taipei jointly brought DOR into life. They chose to use the rainbow element to bring out the uniqueness and inclusiveness of the human soul in their first collaboration.
+                                                </v-card-text>
+                                                <div @click="dialog = false" class="dialogClose">×</div>
+                                            </div>
+                                        </v-dialog>
+                                    </div>
+                                </v-img>
                             </v-col>
                             <v-col cols="6" md="3" class="crewItem">
                                 <v-img class="crewBackground" :class="$vuetify.breakpoint.mobile ? 'waiK' : 'waiKPc'" src="../assets/glass_crew.png">
@@ -1230,36 +1230,33 @@ $bg-img: '../assets/h5Swiper.png';
         line-height: 15px;
     }
 }
-.crewItem {
-    position: relative;
-}
+
 .crewItem > div {
     transition: .2s ease;
+    position: relative;
 }
 .crewItem:first-child:hover > div{
     background: rgb(0 0 0 / 30%);
     transition: .2s ease;
 }
-.crewItem:hover .crewMoreInfo > div:first-child {
+.crewItem:hover .crewMoreInfo {
     opacity: .5;
     transition: .2s ease;
 }
 .crewMoreInfo {
     display: inline-block;
-}
-.crewMoreInfo > div:first-child {
     position: absolute;
-    bottom: 5%;
-    right: 10%;
+    bottom: 2%;
+    right: 4%;
     cursor: pointer;
     opacity: 0;
     transition: .2s ease;
 }
-.crewItem .crewMoreInfo > div:first-child:hover {
+.crewItem .crewMoreInfo:hover {
     opacity: .8;
     transition: .2s ease;
 }
-.crewMoreInfo > div:first-child svg {
+.crewMoreInfo  svg {
     width: 20px;
     height: 20px;
 }
@@ -1395,12 +1392,16 @@ $bg-img: '../assets/h5Swiper.png';
     .crewModal.gradient-border {
         padding: 6%;
     }
-    .crewMoreInfo > div:first-child {
-        bottom: -3%;
+    .crewItem:first-child:hover > div {
+        background: none;
     }
-    .crewMoreInfo > div:first-child,
-    .crewItem:hover .crewMoreInfo > div:first-child {
+    .crewMoreInfo,
+    .crewItem:hover .crewMoreInfo {
         opacity: .6;
+    }
+    .crewMoreInfo svg {
+        width: 16px;
+        height: 16px;
     }
     .crewModal .v-card__text {
         font-size: 12px;
