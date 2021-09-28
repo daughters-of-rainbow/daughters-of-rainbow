@@ -821,7 +821,6 @@ export default {
        async oneClickSell() {
            
              let b = ethers.BigNumber.from(Number(this.cliamObj.index));
-            //
             let result = await this.masterInstance.claim(b);
             this.showResult(result, '领取空投成功');
             
