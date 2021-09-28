@@ -95,7 +95,7 @@
                                     </v-row>
                                     <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                         <v-col class="px-0">
-                                            <v-card v-if="false" class="operateBtn" color="#AA99EA">
+                                            <v-card v-if="true" class="operateBtn" color="#AA99EA">
                                                 <v-row justify="center" style="overflow: hidden; max-height: 72px">
                                                     <v-col class="star text-center" cols="2">
                                                         <v-icon size="30" color="#4b3983">mdi-star</v-icon>
@@ -116,14 +116,14 @@
                                                     </v-col>
                                                 </v-row>
                                             </v-card>
-                                            <v-img class="mintBtn" v-else src="../assets/btn_coming_soon.png"></v-img>
+                                            <v-img  class="mintBtn" v-else src="../assets/btn_coming_soon.png"></v-img>
                                         </v-col>
                                     </v-row>
                                     <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                         <v-col class="px-0">
                                             <div class="hasMinted">
-                                                <!-- <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted -->
-                                                <span>Phase I : XXX / 999 </span> DAUGHTERS Minted
+                                                <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted
+                                                <!-- <span>Phase I : XXX / 999 </span> DAUGHTERS Minted -->
                                             </div>
                                         </v-col>
                                     </v-row>
@@ -603,20 +603,16 @@
                 </v-fab-transition>
             </v-col>
         </v-row>
-        <!-- <v-dialog   persistent  v-model="showDialog">
-            
-               
+        <v-dialog   persistent  v-model="showDialog">       
         <div class="gradient-border">
- <div>
+            <div>
                 <div class="my-6 ftw ft16 text-center">Reward Claiming Launchpad</div>
                  <v-divider style="border-color: #fff" dark class="mb-3 mx-5 cfff"></v-divider>
                 <div class="pa-3 text-center">
-                    <div class="ft14">You have 10 daughters</div>
+                    <!-- <div class="ft14">You have 10 daughters</div> -->
                     <div class="ft14">You are eligible for</div>
-                    <div class="wenAn ft12 ftw mt-2">-A Mix&Match Silver Grade Daughter-</div>
+                    <div class="wenAn ft12 ftw mt-2">{{cliamObj.tips3}}</div>
                 </div>
-               
-
                 <div class="mx-5 mt-3 pb-6">
                     <v-row>
                         <v-col>
@@ -626,10 +622,9 @@
                         </v-col>
                     </v-row>
                 </div>
-            </div>
+            </div>  
         </div>
-            
-        </v-dialog> -->
+        </v-dialog>
     </div>
 </template>
 
@@ -645,7 +640,7 @@ export default {
     inject: ['reload'],
     data: () => ({
         isShow: false,
-        showDialog: true,
+        showDialog: false,
         buyNum: 1,
         saledNftNum: 0, //售出数量
         totoNftNum: 0,
@@ -703,6 +698,16 @@ export default {
                 answer: 'To buy our NFT, you need an Ethereum wallet with ETHs and a metamask plug-in (or other common crypto wallet like Token Pocket as well) Here are the video tutorials to install a metamask wallet for example. You can search other related tutorial online that suit you more.<p><a href="https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s">https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s</a> English Toturial</p><p>When the sales period is open, you can go to our homepage and click the button that says ‘MINT’. When you click to buy, you’ll receive a metamask pop-up showing the price and estimated gas fee. You need to reserve some ETH to pay the gas fee as network transaction fee.</p><p>We recommend our users to wait until the price goes down. In order to check the price of the gas fee, please check via <a href="https://ethereumprice.org/gas/">https://ethereumprice.org/gas/</a> when gas price goes down relatively.</p>'
             }
         ],
+        cliamList:[
+            {type:'silver',index:1,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Silver Grade Daughter -'},
+            {type:'gold',index:2,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Gold Grade Daughter -'},
+            {type:'rainbow',index:3,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Rainbow Grade Daughter -'},
+            {type:'ebible',index:4,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Daughter E-bible -'},
+            {type:'random',index:5,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Daughter -'},
+            {type:'m3d',index:6,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A 3D Mother NFT -'},
+            {type:'airdrops',index:7,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Limited Daughter NFT -'},
+            {type:'spark',index:8,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A SPARK! Token NFT -'},
+        ],
         bgStyle: {
             width: null,
             '--x-offset': null
@@ -713,6 +718,7 @@ export default {
             height: 1027
         },
         chainId: 0,
+        cliamObj:{},
         nonce: 0,
         masterAddr: '',
         dialog: false,
@@ -736,31 +742,34 @@ export default {
     },
     async mounted() {
         window.addEventListener('scroll', this.handleScroll, true);
-    //     const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
-    //     this.local_address = address;
-    //     this.nonce = await provider.getTransactionCount(this.local_address);
-    //     console.info(this.nonce);
-    //     this.gasPrice = await provider.getGasPrice();
-    //     this.chainId = chainId;
-    //     let ethBalance = await provider.getBalance(address);
-    //     this.ethBalance = ethers.utils.formatEther(ethBalance);
-    //     this.tenetProvider = provider;
-    //     this.masterInstance = masterInstance;
-    //     this.masterAddr = masterAddr;
+       
+        //获取当前网络环境
+       
+        ethereum.on('chainChanged', (res) => {
+            if (parseInt(res) != 1) {
+                this.$toast({ text: 'current RPC node is ' + netInfo.name });
+                this.reload();
+            }
+        });
+       
+        const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
+         let netInfo = await provider.getNetwork();
+          if (netInfo.name != 'homestead') {
+            this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
+        }
+        this.local_address = address;
+        this.nonce = await provider.getTransactionCount(this.local_address);
+        console.info(this.nonce);
+        this.gasPrice = await provider.getGasPrice();
+        this.chainId = chainId;
+        let ethBalance = await provider.getBalance(address);
+        this.ethBalance = ethers.utils.formatEther(ethBalance);
+        this.tenetProvider = provider;
+        this.masterInstance = masterInstance;
+        this.masterAddr = masterAddr;
 
-    //     await this.initNftInfo();
-    //     //获取当前网络环境
-    //     let netInfo = await provider.getNetwork();
-    //     ethereum.on('chainChanged', (res) => {
-    //         if (parseInt(res) != 1) {
-    //             this.$toast({ text: 'current RPC node is ' + netInfo.name });
-    //             this.reload();
-    //         }
-    //     });
-    //     if (netInfo.name != 'homestead') {
-    //         this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
-    //     }
-    //     // const onboarding = new MetaMaskOnboarding();
+        await this.initNftInfo();
+        // const onboarding = new MetaMaskOnboarding();
     },
     methods: {
         //初始化数据
@@ -778,6 +787,16 @@ export default {
             // 获取用户是否可领取奖励
             let userClaim = await this.masterInstance.canClaim(this.local_address);
             console.info(userClaim, 'userClaim');
+            this.cliamList.forEach((m)=>{
+                this.$set(m,'value',userClaim[m.type])
+            })
+            let arr = this.cliamList.filter((item)=>{
+                return item.value == true
+            })
+            if(arr.length>0){
+                this.showDialog = true;
+                this.cliamObj = arr[arr.length-1]
+            }
         },
         //购买nft
         async mintNft() {
@@ -791,12 +810,21 @@ export default {
         async showResult(v, m) {
             let recepit = await v.wait();
             this.$toast({ text: m });
+
             if (recepit) {
-                this.reload();
+                setTimeout(()=>{
+                    this.reload();
+                },1000)
+                
             }
         },
-        oneClickSell() {
-            this.showDialog= false
+       async oneClickSell() {
+           
+             let b = ethers.BigNumber.from(Number(this.cliamObj.index));
+            //
+            let result = await this.masterInstance.claim(b);
+            this.showResult(result, '领取空投成功');
+            
         },
         handleScroll(e) {
             var dis = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
