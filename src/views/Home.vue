@@ -604,7 +604,7 @@
             </v-col>
         </v-row>
         <v-dialog   persistent  v-model="showDialog">       
-        <div class="gradient-border">
+        <div  class="crewModal gradient-border flex-column">
             <div>
                 <div class="my-6 ftw ft16 text-center">Reward Claiming Launchpad</div>
                  <v-divider style="border-color: #fff" dark class="mb-3 mx-5 cfff"></v-divider>
@@ -623,24 +623,28 @@
                     </v-row>
                 </div>
             </div>  
+             <div @click="showDialog = false" class="dialogClose">×</div>
         </div>
+        
         </v-dialog>
+        <loading :overlay="isLoading"/>
     </div>
 </template>
 
 <script>
-import { CountUp } from 'countup.js';
+import loading from '../components/loading.vue';
 import { ethers, utils } from 'ethers';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { computBignumber, digitNum } from '../contract/util';
 import { judgeUserOpenMetamask } from '../contract/initWeb3';
 export default {
     name: 'HelloWorld',
-    components: {},
+    components: {loading},
     inject: ['reload'],
     data: () => ({
         isShow: false,
         showDialog: false,
+        isLoading:true,
         buyNum: 1,
         saledNftNum: 0, //售出数量
         totoNftNum: 0,
@@ -797,9 +801,11 @@ export default {
                 this.showDialog = true;
                 this.cliamObj = arr[arr.length-1]
             }
+            this.isLoading = false;
         },
         //购买nft
         async mintNft() {
+            this.isLoading = true;
             let b = ethers.BigNumber.from(Number(1)),
                 val = this.salePrice * this.buyNum * 1e18 + '';
             console.info(val);
@@ -817,9 +823,11 @@ export default {
                 },1000)
                 
             }
+            this.isLoading = false;
         },
        async oneClickSell() {
-           
+           this.showDialog= false;
+           this.isLoading = true;
              let b = ethers.BigNumber.from(Number(this.cliamObj.index));
             let result = await this.masterInstance.claim(b);
             this.showResult(result, '领取空投成功');
@@ -1287,6 +1295,7 @@ $bg-img: '../assets/h5Swiper.png';
     width: 20px;
     height: 20px;
 }
+
 .crewModal {
     background: #000;
     background-size: 230%;

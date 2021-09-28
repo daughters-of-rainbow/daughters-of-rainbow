@@ -5,7 +5,7 @@
             indeterminate
             size="64"
         ></v-progress-circular> -->
-         <svg-icon class="mx-auto" className="contract_icon" data_iconName="loading" />
+         <svg-icon class="mx-auto" className="atptMax_icon" data_iconName="loading" />
         </v-overlay> 
     </div>
 </template>
