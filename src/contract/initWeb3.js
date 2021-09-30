@@ -12,7 +12,7 @@ export const judgeUserOpenMetamask = () => {
              let chainId = await ethereum.request({method:'eth_chainId'});
              let provider = new ethers.providers.Web3Provider(window.ethereum);
              const signer = provider.getSigner(accounts[0]);
-             const masterAddr = '0x4Ffe17e286742f57eB2892CB8e42E773B0e7E5c3'
+             const masterAddr = '0x8Ea1E5bcdF76706f158b7b2b2612B405587eB165'
              const masterContract = new ethers.Contract(masterAddr,master, signer);
              let data = {
                address:accounts[0],
