@@ -806,7 +806,7 @@ export default {
         //购买nft
         async mintNft() {
             this.isLoading = true;
-            let b = ethers.BigNumber.from(Number(1)),
+            let b = ethers.BigNumber.from(this.buyNum),
                 val = this.salePrice * this.buyNum * 1e18 + '';
             console.info(val);
             //
