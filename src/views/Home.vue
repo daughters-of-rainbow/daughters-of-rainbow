@@ -647,7 +647,6 @@ export default {
         isLoading:true,
         buyNum: 1,
         saledNftNum: 0, //售出数量
-        totoNftNum: 0,
         salePrice: 0.05,
         colors: ['indigo', 'warning', 'pink darken-2', 'red lighten-1', 'deep-purple accent-4'],
         slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth'],
@@ -786,8 +785,6 @@ export default {
             let saledNftNum = await this.masterInstance.getDaughterCount();
             this.saledNftNum = parseInt(saledNftNum);
             //查询全部数量
-            let totoNftNum = await this.masterInstance.totalSupply();
-            this.totoNftNum = parseInt(totoNftNum);
             // 获取用户是否可领取奖励
             let userClaim = await this.masterInstance.canClaim(this.local_address);
             console.info(userClaim, 'userClaim');
