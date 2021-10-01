@@ -122,7 +122,7 @@
                                     <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                         <v-col class="px-0">
                                             <div class="hasMinted">
-                                                <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted
+                                                <span>Phase I: {{ saledNftNum }} / 999 </span> DAUGHTERS Minted
                                                 <!-- <span>Phase I : XXX / 999 </span> DAUGHTERS Minted -->
                                             </div>
                                         </v-col>
