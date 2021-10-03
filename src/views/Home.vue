@@ -55,7 +55,7 @@
                             <v-col cols="12" md="2" class="wallet" :class="$vuetify.breakpoint.mobile ? 'mr-8' : ''">
                                 <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'ml-3'">
                                     <v-btn
-                                        :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
+                                    :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
                                         block
                                         class="text-capitalize"
                                         dark
@@ -83,7 +83,7 @@
                                     <v-row
                                         v-if="false"
                                         class="countDown mt-5 font-weight-bold"
-                                        :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
+                                    :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
                                     >
                                         <v-col class="timeC">2</v-col>
                                         <v-col>:</v-col>
@@ -238,7 +238,7 @@
                             <h4 class="d-flex mx-3 mb-4">
                                 <div><img style="width: 41px" class="mr-2 mt-4 middle" src="../assets/diamand.png" /></div>
                                 <div class="pt-4 cfff">
-                                    <span class="strc ft20">Phase I ：1,523</span> DAUGHTERS at 0.05 ETH/ piece (Blind-box)
+                                    <span class="strc ft20">Phase I : 1,523</span> DAUGHTERS at 0.05 ETH/ piece (Blind-box)
                                 </div>
                             </h4>
                             <v-row justify="center" class="align-center mx-3">
@@ -254,31 +254,19 @@
                                                 <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
                                             </div>
                                             <div>
-                                                Sell out 30% : Unlocks Daughters of Alien series on Opensea ( 44 pieces with 0.07 ETH/ piece)
+                                                Sell out 30% : Unlocks Daughters of Alien series on Opensea (44 pieces with 0.07 ETH/ piece)
                                             </div>
                                         </div>
                                         <div class="d-flex">
                                             <div class="mr-1">
                                                 <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
                                             </div>
-                                            <div>Sell out 50%: Unlocks reward airdrop plan ( details to be announced on discord/twitter)</div>
+                                            <div>Sell out 50% : Unlocks reward airdrop plan (details to be announced on discord/twitter)</div>
                                         </div>
                                         <div class="ml-7">
-                                            - Holders of 5: receive a silver grade mix-n-match Daughters ( total 5 designs with 10pc/each)
-                                            <br />
-                                            - Holders of 10: receive a gold grade mix-n-match Daughters ( total 10 designs with 5 pc/each)<br />
-                                            - Holders of 20: receive a rainbow grade mix-n-match Daughters (total 5 animated designs with 1
-                                            pc/each)<br />
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="mr-1">
-                                                <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                            </div>
-                                            <div>Sell out 100%: Unlock Phase II rare Daughters</div>
-                                        </div>
-                                        <div class="ml-7">
-                                            - Holders of 3 will receive an e-Bible of Daughter’s family ( details will be announced on
-                                            discord/twitter)
+                                            - Holders of 5 : receive a silver grade mix-n-match Daughters<br />
+                                            - Holders of 10 : receive a gold grade mix-n-match Daughters<br />
+                                            - Holders of 20 : receive a rainbow grade mix-n-match Daughters<br />
                                         </div>
                                     </div>
                                 </v-col>
@@ -287,7 +275,7 @@
                             <h4 class="d-flex pcFlexC mx-3 mb-4">
                                 <div><img style="width: 41px" class="mr-2 middle" src="../assets/diamand_2.png" /></div>
                                 <div class="cfff">
-                                    <span class="strc ft20">Phase II：450</span> Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)
+                                    <span class="strc ft20">Phase II : 450</span> Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)
                                 </div>
                             </h4>
                             <v-row justify="center" class="align-center mx-3">
@@ -306,9 +294,8 @@
                                         </div>
 
                                         <div class="ml-7">
-                                            - They will be listed directly on Opensea <br />
-                                            - Holders of 3 will get mix-n-match daughter with random rarity ( details to be announced on
-                                            discord/twitter)<br />
+                                            - They will be listed directly on Opensea<br />
+                                            - Holders of 3 will get an e-bible NFT of Daughter family (details to be announced on discord/twitter)<br />
                                         </div>
                                         <div class="d-flex">
                                             <div class="mr-1">
@@ -326,7 +313,7 @@
                             <h4 class="d-flex pcFlexC mx-3 mb-4">
                                 <div><img style="width: 41px" class="mr-2 middle" src="../assets/diamand_3.png" /></div>
                                 <div class="cfff">
-                                    <span class="strc ft20">Phase III：30</span> pieces of MOTHER who created DAUGHTERS(On Opensea)
+                                    <span class="strc ft20">Phase III : 30</span> pieces of MOTHER who created DAUGHTERS (On Opensea)
                                 </div>
                             </h4>
                             <v-row justify="center" class="align-center mx-3">
@@ -346,9 +333,9 @@
                                         <div class="ml-7">
                                             - Auction: Bidding price <br />
                                             - They will be listed directly on Opensea<br />
-                                            - Each holder of mother will receive a 3D version of artwork ( details to be announced on
+                                            - Each holder of mother will receive a 3D version of artwork (details to be announced on
                                             discord/twitter) <br />
-                                            - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards.
+                                            - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards
                                         </div>
                                     </div>
                                 </v-col>
@@ -364,7 +351,7 @@
                         <h3 class="d-flex pcFlexC mb-4">
                             <div><img style="width: 50px" class="middle mr-2" src="../assets/diamand.png" /></div>
                             <div class="cfff">
-                                <span class="strc ft30">Phase I ：1,523</span> <span class="ft24">DAUGHTERS at 0.05 ETH/ piece (Blind-box)</span>
+                                <span class="strc ft30">Phase I : 1,523</span> <span class="ft24">DAUGHTERS at 0.05 ETH/ piece (Blind-box)</span>
                             </div>
                         </h3>
                         <v-row justify="center" class="align-center roadmapiItem">
@@ -379,29 +366,18 @@
                                         <div class="mr-1">
                                             <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
                                         </div>
-                                        <div>Sell out 30% : Unlocks Daughters of Alien series on Opensea ( 44 pieces with 0.07 ETH/ piece)</div>
+                                        <div>Sell out 30% : Unlocks Daughters of Alien series on Opensea (44 pieces with 0.07 ETH/ piece)</div>
                                     </div>
                                     <div class="d-flex">
                                         <div class="mr-1">
                                             <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
                                         </div>
-                                        <div>Sell out 50%: Unlocks reward airdrop plan ( details to be announced on discord/twitter)</div>
+                                        <div>Sell out 50% : Unlocks reward airdrop plan (details to be announced on discord/twitter)</div>
                                     </div>
                                     <div class="ml-7">
-                                        - Holders of 5: receive a silver grade mix-n-match Daughters ( total 5 designs with 10pc/each) <br />
-                                        - Holders of 10: receive a gold grade mix-n-match Daughters ( total 10 designs with 5 pc/each)<br />
-                                        - Holders of 20: receive a rainbow grade mix-n-match Daughters (total 5 animated designs with 1
-                                        pc/each)<br />
-                                    </div>
-                                    <div class="d-flex">
-                                        <div class="mr-1">
-                                            <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
-                                        </div>
-                                        <div>Sell out 100%: Unlock Phase II rare Daughters</div>
-                                    </div>
-                                    <div class="ml-7">
-                                        - Holders of 3 will receive an e-Bible of Daughter’s family ( details will be announced on
-                                        discord/twitter)
+                                        - Holders of 5 : receive a silver grade mix-n-match Daughters<br />
+                                        - Holders of 10 : receive a gold grade mix-n-match Daughters<br />
+                                        - Holders of 20 : receive a rainbow grade mix-n-match Daughters<br />
                                     </div>
                                 </h2>
                             </v-col>
@@ -410,7 +386,7 @@
                         <h3 class="d-flex pcFlexC mb-4">
                             <div><img style="width: 50px" class="middle mr-2" src="../assets/diamand_2.png" /></div>
                             <div class="cfff">
-                                <span class="strc ft30">Phase II：450</span> <span class="ft24">Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)</span>
+                                <span class="strc ft30">Phase II : 450</span> <span class="ft24">Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)</span>
                             </div>
                         </h3>
                         <v-row justify="center" class="align-center roadmapiItem">
@@ -429,8 +405,7 @@
                                     </div>
                                     <div class="ml-7">
                                         - They will be listed directly on Opensea <br />
-                                        - Holders of 3 will get mix-n-match daughter with random rarity ( details to be announced on
-                                        discord/twitter)<br />
+                                        - Holders of 3 will get an e-bible NFT of Daughter family (details to be announced on discord/twitter)<br />
                                     </div>
                                     <div class="d-flex">
                                         <div class="mr-1">
@@ -448,7 +423,7 @@
                         <h3 class="d-flex pcFlexC mb-4">
                             <div><img style="width: 50px" class="middle mr-2" src="../assets/diamand_3.png" /></div>
                             <div class="cfff">
-                                <span class="strc ft30">Phase III：30</span> <span class="ft24">pieces of MOTHER who created DAUGHTERS(On Opensea)</span>
+                                <span class="strc ft30">Phase III : 30</span> <span class="ft24">pieces of MOTHER who created DAUGHTERS(On Opensea)</span>
                             </div>
                         </h3>
                         <v-row justify="center" class="align-center roadmapiItem">
@@ -468,9 +443,9 @@
                                     <div class="ml-7">
                                         - Auction: Bidding price <br />
                                         - They will be listed directly on Opensea<br />
-                                        - Each holder of mother will receive a 3D version of artwork ( details to be announced on
+                                        - Each holder of mother will receive a 3D version of artwork (details to be announced on
                                         discord/twitter) <br />
-                                        - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards.
+                                        - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards
                                     </div>
                                 </h2>
                             </v-col>
@@ -665,7 +640,10 @@ export default {
                 ques: 'WHAT IS THE RAINBOW ESSENCE?',
                 answer: 'The concept of the Daughters of Rainbow is anchored in the Rainbow Sea, which exists at the source of the Universe. All answers related to humans flow through the Rainbow Sea and manifest in the form of rainbow light. The artist hopes that NFTs in different forms can become virtual containers that capture this light -- the Rainbow Essence -- from the universe, storing the connection between humans and the Rainbow Sea, giving access to the answers to the source of life.'
             },
-            { ques: 'WHEN IS THE LAUNCH DATE?', answer: 'Official Launch is at 13th Oct 2021 10am UTC' },
+            {   
+                ques: 'WHEN IS THE LAUNCH DATE?', 
+                answer: 'Official Launch is at 13th Oct 2021 10am UTC.' 
+            },
             {
                 ques: 'HOW MUCH DOES EACH DAUGHTERS OF RAINBOW COST IN PHASE I INITIAL LAUNCH?',
                 answer: 'Each DAUGHTERS in phase I will be minted at 0.05 ETH + Gas on minting day！'
@@ -676,7 +654,7 @@ export default {
             },
             {
                 ques: 'WHAT IS THE SMART CONTRACT ADDRESS FOR DOR?',
-                answer: 'This will be launched on Website and Twitter on the launch day!'
+                answer: 'This will be launched on Website and Twitter on the launch day !'
             },
             {
                 ques: 'WILL THERE BE A PRIVATE-SALE?',
@@ -688,8 +666,8 @@ export default {
             },
             {
                 ques: 'WHAT ARE MIX-N-MATCH DAUGHTERS DROPS?',
-                answer: 'Mix-n-Match daughters are reward giveaways for our Phase I daughter holders.<p>- Holders of 5: receive a silver grade mix-n-match Daughters (5 designs with 10pc/each)</p><p>- Holders of 10: receive a gold grade mix-n-match Daughters (10 designs with 5 pc/each)</p>- Holders of 20: receive a rainbow grade mix-n-match Daughters (5 animated designs with 1 pc/each)'
-            },
+                answer: '<p>Mix-n-Match daughters are reward giveaways for our Phase I daughter holders.</p><p>- Holders of 5 : receive a silver grade mix-n-match Daughters.</p><p>- Holders of 10 : receive a gold grade mix-n-match Daughters.</p>- Holders of 20 : receive a ra inbow grade mix-n-match Daughters.'
+            } ,
             {
                 ques: 'WHAT ARE RARE ANIMATED DAUGHTERS IN PHASE II?',
                 answer: 'They are 30 unique animated daughters NFT with 15 copies of each one. They will be listed on opensea with 0.15 ETH /piece. '
@@ -700,7 +678,7 @@ export default {
             },
             {
                 ques: 'WHAT IF I DON’T HAVE A WALLET TO CONNECT?',
-                answer: 'To buy our NFT, you need an Ethereum wallet with ETHs and a metamask plug-in (or other common crypto wallet like Token Pocket as well) Here are the video tutorials to install a metamask wallet for example. You can search other related tutorial online that suit you more.<p><a href="https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s">https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s</a> English Toturial</p><p>When the sales period is open, you can go to our homepage and click the button that says ‘MINT’. When you click to buy, you’ll receive a metamask pop-up showing the price and estimated gas fee. You need to reserve some ETH to pay the gas fee as network transaction fee.</p><p>We recommend our users to wait until the price goes down. In order to check the price of the gas fee, please check via <a href="https://ethereumprice.org/gas/">https://ethereumprice.org/gas/</a> when gas price goes down relatively.</p>'
+                answer: 'To buy our NFT, you need an Ethereum wallet with ETHs and a metamask plug-in (or other common crypto wallet like Token Pocket as well) Here are the video tutorials to install a metamask wallet for example. You can search other related tutorial online that suit you more.<p><a href="https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s">https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s</a> English Toturial.</p><p>When the sales period is open, you can go to our homepage and click the button that says ‘MINT’. When you click to buy, you’ll receive a metamask pop-up showing the price and estimated gas fee. You need to reserve some ETH to pay the gas fee as network transaction fee.</p><p>We recommend our users to wait until the price goes down. In order to check the price of the gas fee, please check via <a href="https://ethereumprice.org/gas/">https://ethereumprice.org/gas/</a> when gas price goes down relatively.</p>'
             }
         ],
         bgStyle: {
