@@ -238,7 +238,7 @@
                             <h4 class="d-flex mx-3 mb-4">
                                 <div><img style="width: 41px" class="mr-2 mt-4 middle" src="../assets/diamand.png" /></div>
                                 <div class="pt-4 cfff">
-                                    <span class="strc ft20">Phase I : 1,523</span> DAUGHTERS at 0.05 ETH/ piece (Blind-box)
+                                    <span class="strc ft20">Phase I : 999</span> DAUGHTERS at 0.05 ETH/ piece (Blind-box)
                                 </div>
                             </h4>
                             <v-row justify="center" class="align-center mx-3">
@@ -351,7 +351,7 @@
                         <h3 class="d-flex pcFlexC mb-4">
                             <div><img style="width: 50px" class="middle mr-2" src="../assets/diamand.png" /></div>
                             <div class="cfff">
-                                <span class="strc ft30">Phase I : 1,523</span> <span class="ft24">DAUGHTERS at 0.05 ETH/ piece (Blind-box)</span>
+                                <span class="strc ft30">Phase I : 999</span> <span class="ft24">DAUGHTERS at 0.05 ETH/ piece (Blind-box)</span>
                             </div>
                         </h3>
                         <v-row justify="center" class="align-center roadmapiItem">
