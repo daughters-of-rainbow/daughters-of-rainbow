@@ -1274,14 +1274,13 @@ export default {
           this.reload();
         }
       });
-
       const { address, chainId, provider, masterAddr, masterInstance } =
         await judgeUserOpenMetamask();
         console.info(chainId,'chainId')
       let netInfo = await provider.getNetwork();
       
       if (netInfo.name != "homestead") {
-           await this.switchNetwork();
+        //    await this.switchNetwork();
         this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
       }
       this.local_address = address;
@@ -1295,8 +1294,6 @@ export default {
       this.tenetProvider = provider;
       this.masterInstance = masterInstance;
       this.masterAddr = masterAddr;
-      const onboarding = new MetaMaskOnboarding();
-      console.info(onboarding);
       await this.initNftInfo();
     }
   },
@@ -1304,12 +1301,7 @@ export default {
     async connectWallet() {
       try {
         this.isLoading = true;
-        ethereum.on("chainChanged", (res) => {
-          if (parseInt(res) != 1) {
-            this.$toast({ text: "current RPC node is " + netInfo.name });
-            this.reload();
-          }
-        });
+        
 
         const { address, chainId, provider, masterAddr, masterInstance } =
           await judgeUserOpenMetamask();
