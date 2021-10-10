@@ -1,4 +1,5 @@
 <template>
+
   <div :class="$vuetify.breakpoint.mobile ? 'h5-page' : 'pc-page'">
     <v-row>
       <v-col cols="12">
@@ -1036,39 +1037,31 @@
         </v-fab-transition>
       </v-col>
     </v-row>
-    <v-dialog persistent v-model="showDialog">
-      <div class="crewModal gradient-border flex-column">
-        <div>
-          <div class="my-6 ftw ft16 text-center">Reward Claiming Launchpad</div>
-          <v-divider
-            style="border-color: #fff"
-            dark
-            class="mb-3 mx-5 cfff"
-          ></v-divider>
-          <div class="pa-3 text-center">
-            <!-- <div class="ft14">You have 10 daughters</div> -->
-            <div class="ft14">You are eligible for</div>
-            <div class="wenAn ft12 ftw mt-2">{{ cliamObj.tips3 }}</div>
-          </div>
-          <div class="mx-5 mt-3 pb-6">
-            <v-row>
-              <v-col>
-                <v-btn
-                  @click="oneClickSell"
-                  color="#fee08a"
-                  class="tenetFFF pa-6"
-                  block
-                >
-                  <span>CLAIM </span>
-                </v-btn>
-              </v-col>
-            </v-row>
-          </div>
+    <v-dialog   persistent  v-model="showDialog" max-width="420" overlay-opacity="0.8">       
+        <div  class=" gradient-border flex-column">
+            <div>
+                <div class="my-6 ftw ft16 text-center">Reward Claiming Launchpad</div>
+                 <v-divider style="border-color: #fff" dark class="mb-3 mx-5 cfff"></v-divider>
+                <div class="pa-3 text-center">
+                    <!-- <div class="ft14">You have 10 daughters</div> -->
+                    <div class="ft14">You are eligible for</div>
+                    <div class="wenAn ft12 ftw mt-2">{{cliamObj.tips3}}</div>
+                </div>
+                <div class="mx-5 mt-3 pb-6">
+                    <v-row>
+                        <v-col>
+                            <v-btn  @click="oneClickSell" color="#fee08a" class="tenetFFF pa-6" block>
+                                <span >CLAIM </span>
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                </div>
+            </div>  
+             <div @click="showDialog = false" class="dialogClose">×</div>
         </div>
-        <div @click="showDialog = false" class="dialogClose">×</div>
-      </div>
-    </v-dialog>
-    <loading :overlay="isLoading" />
+        
+        </v-dialog>
+        <loading :overlay="isLoading"/>
   </div>
 </template>
 
@@ -1265,53 +1258,57 @@ export default {
   },
   async mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
-    let address = window.sessionStorage.getItem("address");
-    if (address) {
-      this.isLoading = true;
-      ethereum.on("chainChanged", (res) => {
-        if (parseInt(res) != 1) {
-          this.$toast({ text: "current RPC node is " + netInfo.name });
-          this.reload();
-        }
-      });
-      const { address, chainId, provider, masterAddr, masterInstance } =
-        await judgeUserOpenMetamask();
-        console.info(chainId,'chainId')
-      let netInfo = await provider.getNetwork();
-      
-      if (netInfo.name != "homestead") {
-        //    await this.switchNetwork();
-        this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
-      }
-      this.local_address = address;
-      window.sessionStorage.setItem("address", this.local_address);
-      this.nonce = await provider.getTransactionCount(this.local_address);
-      console.info(this.nonce);
-      this.gasPrice = await provider.getGasPrice();
-      this.chainId = chainId;
-      let ethBalance = await provider.getBalance(address);
-      this.ethBalance = ethers.utils.formatEther(ethBalance);
-      this.tenetProvider = provider;
-      this.masterInstance = masterInstance;
-      this.masterAddr = masterAddr;
-      await this.initNftInfo();
-    }
-  },
-  methods: {
-    async connectWallet() {
-      try {
-        this.isLoading = true;
-        
+    let address = window.sessionStorage.getItem('address');
+    if(address){
+          this.isLoading = true;
+        ethereum.on("chainChanged", (res) => {
+          if (parseInt(res) != 1) {
+            this.$toast({ text: "current RPC node is " + netInfo.name });
+            this.reload();
+          }
+        });
 
         const { address, chainId, provider, masterAddr, masterInstance } =
           await judgeUserOpenMetamask();
         let netInfo = await provider.getNetwork();
         if (netInfo.name != "homestead") {
           this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
-        //    await this.switchNetwork();
         }
         this.local_address = address;
-        window.sessionStorage.setItem("address", this.local_address);
+        window.sessionStorage.setItem('address',this.local_address)
+        this.nonce = await provider.getTransactionCount(this.local_address);
+        console.info(this.nonce);
+        this.gasPrice = await provider.getGasPrice();
+        this.chainId = chainId;
+        let ethBalance = await provider.getBalance(address);
+        this.ethBalance = ethers.utils.formatEther(ethBalance);
+        this.tenetProvider = provider;
+        this.masterInstance = masterInstance;
+        this.masterAddr = masterAddr;
+
+        await this.initNftInfo();
+    }
+   
+  },
+  methods: {
+    async connectWallet() {
+      try {
+          this.isLoading = true;
+        ethereum.on("chainChanged", (res) => {
+          if (parseInt(res) != 1) {
+            this.$toast({ text: "current RPC node is " + netInfo.name });
+            this.reload();
+          }
+        });
+
+        const { address, chainId, provider, masterAddr, masterInstance } =
+          await judgeUserOpenMetamask();
+        let netInfo = await provider.getNetwork();
+        if (netInfo.name != "homestead") {
+          this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+        }
+        this.local_address = address;
+        window.sessionStorage.setItem('address',this.local_address)
         this.nonce = await provider.getTransactionCount(this.local_address);
         console.info(this.nonce);
         this.gasPrice = await provider.getGasPrice();
@@ -1324,57 +1321,24 @@ export default {
 
         await this.initNftInfo();
       } catch (error) {
-        this.isLoading = false;
-        const onboarding = new MetaMaskOnboarding();
-        if (onboarding.state == "INSTALLED") {
-        //  await this.switchNetwork();
-        } else {
-          this.$toast({
-            text: "Please install Metamask on Chrome plugin or Metamask APP.",
-          });
-          if (this.$vuetify.breakpoint.mobile) {
-            const u = navigator.userAgent;
-            const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-            if (isiOS) {
-              window.open(
-                "https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202"
-              );
-            } else {
-              window.open(
-                "https://play.google.com/store/apps/details?id=io.metamask&hl"
-              );
-            }
-          } else {
-            setTimeout(() => {
-              onboarding.startOnboarding();
-            }, 1000);
+           this.isLoading = false;
+          this.$toast({ text:'Please install Metamask on Chrome plugin or Metamask APP.'})
+          if(this.$vuetify.breakpoint.mobile){
+               const u = navigator.userAgent;
+               const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+               if(isiOS){
+                   window.open('https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202')
+               }else{
+                   window.open('https://play.google.com/store/apps/details?id=io.metamask&hl')
+               }
+          }else{
+            const onboarding = new MetaMaskOnboarding();   
+            setTimeout(()=>{
+                onboarding.startOnboarding();   
+            },1000)
           }
-        }
+          
       }
-    },
-    async switchNetwork(){
-        try {
-            await window.ethereum.request({
-              method: "wallet_switchEthereumChain",
-              params: [{ chainId: "0x1" }],
-            });
-          } catch (switchError) {
-               console.info(switchError,'--=-=-=')
-            // This error code indicates that the chain has not been added to MetaMask.
-            if (switchError.code === 4902) {
-              try {
-                await ethereum.request({
-                  method: "wallet_addEthereumChain",
-                  params: [
-                    { chainId: "0x1", rpcUrl: "https://main-light.eth.linkpool.io" /* ... */ },
-                  ],
-                });
-              } catch (addError) {
-                console.info(addError)
-              }
-            }
-            // handle other "switch" errors
-          }
     },
     //初始化数据
     async initNftInfo() {
@@ -1502,6 +1466,7 @@ $bg-img: "../assets/h5Swiper.png";
   color: white;
   background: #222;
   border-radius: 15px;
+  padding: 6%;
 }
 
 .gradient-border::after {
@@ -1698,6 +1663,18 @@ $bg-img: "../assets/h5Swiper.png";
 .operateBtn {
   height: 4.5rem;
   line-height: 3;
+  user-select: none;
+}
+.mintBtn {
+  text-align: center;
+  background: #aa99ea;
+}
+.up:active {
+  background: #d4cafc;
+}
+.mintBtn,
+.up {
+  cursor: pointer;
 }
 .waiK {
   // width: 179px;
@@ -1919,21 +1896,11 @@ $bg-img: "../assets/h5Swiper.png";
   text-align: center;
   position: relative;
 }
-.crewModal .dialogClose {
+.dialogClose {
   position: absolute;
-  top: 0;
-  right: 2%;
-  background: linear-gradient(
-    80deg,
-    #5f86f2,
-    #a65ff2,
-    #f25fd0,
-    #f25f61,
-    #f2cb5f,
-    #abf25f,
-    #5ff281,
-    #5ff2f0
-  );
+  top: -3px;
+  right: 12px;
+  background: linear-gradient(80deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -2174,6 +2141,28 @@ $bg-img: "../assets/h5Swiper.png";
   50% {
     background-position: 100% 50%;
   }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.animate__pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
 </style>
 
