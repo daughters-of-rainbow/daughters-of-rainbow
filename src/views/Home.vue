@@ -55,7 +55,7 @@
                             <v-col cols="12" md="2" class="wallet" :class="$vuetify.breakpoint.mobile ? 'mr-8' : ''">
                                 <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'ml-3'">
                                     <v-btn
-                                    :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
+                                        :class="$vuetify.breakpoint.mobile ? 'rounded-pill' : 'rounded-l-pill'"
                                         block
                                         class="text-capitalize"
                                         dark
@@ -78,12 +78,12 @@
                                     <v-img src="../assets/blindBox.png"></v-img>
                                 </div>
                             </v-col>
-                            <v-col cols="12" md="6">
-                                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'mx-7 mt-10 px-5'">
+                            <v-col cols="12" md="6" :class="$vuetify.breakpoint.mobile ? '' : 'mt-12'">
+                                <div :class="$vuetify.breakpoint.mobile ? 'mx-3' : 'mx-7 px-5'">
                                     <v-row
                                         v-if="false"
                                         class="countDown mt-5 font-weight-bold"
-                                    :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
+                                        :class="$vuetify.breakpoint.mobile ? 'text-h5' : 'text-h3'"
                                     >
                                         <v-col class="timeC">2</v-col>
                                         <v-col>:</v-col>
@@ -95,15 +95,15 @@
                                     </v-row>
                                     <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                         <v-col class="px-0">
-                                            <v-card v-if="false" class="operateBtn" color="#AA99EA">
+                                            <v-card v-if="true" class="operateBtn" color="#AA99EA">
                                                 <v-row justify="center" style="overflow: hidden; max-height: 72px">
                                                     <v-col class="star text-center" cols="2">
                                                         <v-icon size="30" color="#4b3983">mdi-star</v-icon>
                                                     </v-col>
-                                                    <v-col @click="mintNft" cols="7">
-                                                        <span style="color: #4b3983" class="text-h6"
-                                                            >MINT <span class="cfff"> for {{ salePrice }} ETH</span></span
-                                                        >
+                                                    <v-col @click="mintNft" cols="7" class="mintBtn pa-0">
+                                                        <v-btn  class="text-h6" color="#aa99ea" block dark width="100%" height="100%" depressed="false">
+                                                            <span style="color: #4b3983">MINT</span><span class="cfff ml-1"> for {{ salePrice }} ETH</span>
+                                                        </v-btn>
                                                     </v-col>
                                                     <v-col cols="3" class="pa-0" style="background-color: #fff">
                                                         <div class="up" @click="buyNum += 1">
@@ -116,14 +116,14 @@
                                                     </v-col>
                                                 </v-row>
                                             </v-card>
-                                            <v-img class="mintBtn" v-else src="../assets/btn_coming_soon.png"></v-img>
+                                            <!-- <v-img  class="mintBtn" v-else src="../assets/btn_coming_soon.png"></v-img> -->
                                         </v-col>
                                     </v-row>
                                     <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                                         <v-col class="px-0">
                                             <div class="hasMinted">
-                                                <!-- <span>Phase I: {{ saledNftNum }} / {{ totoNftNum }}</span> DAUGHTERS Minted -->
-                                                <span>Phase I : XXX / 999 </span> DAUGHTERS Minted
+                                                <span>Phase I: {{ saledNftNum }} / 999 </span> DAUGHTERS Minted
+                                                <!-- <span>Phase I : XXX / 999 </span> DAUGHTERS Minted -->
                                             </div>
                                         </v-col>
                                     </v-row>
@@ -264,7 +264,7 @@
                                             <div>Sell out 50% : Unlocks reward airdrop plan (details to be announced on discord/twitter)</div>
                                         </div>
                                         <div class="ml-7">
-                                            - Holders of 5 : receive a silver grade mix-n-match Daughters<br />
+                                           - Holders of 5 : receive a silver grade mix-n-match Daughters<br />
                                             - Holders of 10 : receive a gold grade mix-n-match Daughters<br />
                                             - Holders of 20 : receive a rainbow grade mix-n-match Daughters<br />
                                         </div>
@@ -372,7 +372,7 @@
                                         <div class="mr-1">
                                             <svg-icon className="logo_icon middle_svg" data_iconName="buloat"></svg-icon>
                                         </div>
-                                        <div>Sell out 50% : Unlocks reward airdrop plan (details to be announced on discord/twitter)</div>
+                                         <div>Sell out 50% : Unlocks reward airdrop plan (details to be announced on discord/twitter)</div>
                                     </div>
                                     <div class="ml-7">
                                         - Holders of 5 : receive a silver grade mix-n-match Daughters<br />
@@ -481,6 +481,7 @@
                                         <v-dialog
                                         v-model="dialog"
                                         max-width="800"
+                                        overlay-opacity="0.8"
                                         >
                                             <div
                                             class="crewModal gradient-border flex-column"
@@ -578,20 +579,16 @@
                 </v-fab-transition>
             </v-col>
         </v-row>
-        <!-- <v-dialog   persistent  v-model="showDialog">
-            
-               
-        <div class="gradient-border">
- <div>
+        <v-dialog   persistent  v-model="showDialog" max-width="420" overlay-opacity="0.8">       
+        <div  class=" gradient-border flex-column">
+            <div>
                 <div class="my-6 ftw ft16 text-center">Reward Claiming Launchpad</div>
                  <v-divider style="border-color: #fff" dark class="mb-3 mx-5 cfff"></v-divider>
                 <div class="pa-3 text-center">
-                    <div class="ft14">You have 10 daughters</div>
+                    <!-- <div class="ft14">You have 10 daughters</div> -->
                     <div class="ft14">You are eligible for</div>
-                    <div class="wenAn ft12 ftw mt-2">-A Mix&Match Silver Grade Daughter-</div>
+                    <div class="wenAn ft12 ftw mt-2">{{cliamObj.tips3}}</div>
                 </div>
-               
-
                 <div class="mx-5 mt-3 pb-6">
                     <v-row>
                         <v-col>
@@ -601,29 +598,31 @@
                         </v-col>
                     </v-row>
                 </div>
-            </div>
+            </div>  
+             <div @click="showDialog = false" class="dialogClose">×</div>
         </div>
-            
-        </v-dialog> -->
+        
+        </v-dialog>
+        <loading :overlay="isLoading"/>
     </div>
 </template>
 
 <script>
-import { CountUp } from 'countup.js';
+import loading from '../components/loading.vue';
 import { ethers, utils } from 'ethers';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { computBignumber, digitNum } from '../contract/util';
 import { judgeUserOpenMetamask } from '../contract/initWeb3';
 export default {
     name: 'HelloWorld',
-    components: {},
+    components: {loading},
     inject: ['reload'],
     data: () => ({
         isShow: false,
-        showDialog: true,
+        showDialog: false,
+        isLoading:true,
         buyNum: 1,
         saledNftNum: 0, //售出数量
-        totoNftNum: 0,
         salePrice: 0.05,
         colors: ['indigo', 'warning', 'pink darken-2', 'red lighten-1', 'deep-purple accent-4'],
         slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth'],
@@ -681,6 +680,16 @@ export default {
                 answer: 'To buy our NFT, you need an Ethereum wallet with ETHs and a metamask plug-in (or other common crypto wallet like Token Pocket as well) Here are the video tutorials to install a metamask wallet for example. You can search other related tutorial online that suit you more.<p><a href="https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s">https://www.youtube.com/watch?v=MfkqgXNPiHg&t=147s</a> English Toturial.</p><p>When the sales period is open, you can go to our homepage and click the button that says ‘MINT’. When you click to buy, you’ll receive a metamask pop-up showing the price and estimated gas fee. You need to reserve some ETH to pay the gas fee as network transaction fee.</p><p>We recommend our users to wait until the price goes down. In order to check the price of the gas fee, please check via <a href="https://ethereumprice.org/gas/">https://ethereumprice.org/gas/</a> when gas price goes down relatively.</p>'
             }
         ],
+        cliamList:[
+            {type:'silver',index:1,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Silver Grade Daughter -'},
+            {type:'gold',index:2,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Gold Grade Daughter -'},
+            {type:'rainbow',index:3,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Rainbow Grade Daughter -'},
+            {type:'ebible',index:4,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Daughter E-bible -'},
+            {type:'random',index:5,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Mix & Match Daughter -'},
+            {type:'m3d',index:6,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A 3D Mother NFT -'},
+            {type:'airdrops',index:7,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A Limited Daughter NFT -'},
+            {type:'spark',index:8,value:false,tips1:'Reward Claiming Launchpad',tips2:'You are eligible for',tips3:'- A SPARK! Token NFT -'},
+        ],
         bgStyle: {
             width: null,
             '--x-offset': null
@@ -691,6 +700,7 @@ export default {
             height: 1027
         },
         chainId: 0,
+        cliamObj:{},
         nonce: 0,
         masterAddr: '',
         dialog: false,
@@ -714,31 +724,34 @@ export default {
     },
     async mounted() {
         window.addEventListener('scroll', this.handleScroll, true);
-    //     const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
-    //     this.local_address = address;
-    //     this.nonce = await provider.getTransactionCount(this.local_address);
-    //     console.info(this.nonce);
-    //     this.gasPrice = await provider.getGasPrice();
-    //     this.chainId = chainId;
-    //     let ethBalance = await provider.getBalance(address);
-    //     this.ethBalance = ethers.utils.formatEther(ethBalance);
-    //     this.tenetProvider = provider;
-    //     this.masterInstance = masterInstance;
-    //     this.masterAddr = masterAddr;
+       
+        //获取当前网络环境
+       
+        ethereum.on('chainChanged', (res) => {
+            if (parseInt(res) != 1) {
+                this.$toast({ text: 'current RPC node is ' + netInfo.name });
+                this.reload();
+            }
+        });
+       
+        const { address, chainId, provider, masterAddr, masterInstance } = await judgeUserOpenMetamask();
+         let netInfo = await provider.getNetwork();
+          if (netInfo.name != 'homestead') {
+            this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
+        }
+        this.local_address = address;
+        this.nonce = await provider.getTransactionCount(this.local_address);
+        console.info(this.nonce);
+        this.gasPrice = await provider.getGasPrice();
+        this.chainId = chainId;
+        let ethBalance = await provider.getBalance(address);
+        this.ethBalance = ethers.utils.formatEther(ethBalance);
+        this.tenetProvider = provider;
+        this.masterInstance = masterInstance;
+        this.masterAddr = masterAddr;
 
-    //     await this.initNftInfo();
-    //     //获取当前网络环境
-    //     let netInfo = await provider.getNetwork();
-    //     ethereum.on('chainChanged', (res) => {
-    //         if (parseInt(res) != 1) {
-    //             this.$toast({ text: 'current RPC node is ' + netInfo.name });
-    //             this.reload();
-    //         }
-    //     });
-    //     if (netInfo.name != 'homestead') {
-    //         this.$toast({ text: '非ETH主网，请切换至正确的网络！' });
-    //     }
-    //     // const onboarding = new MetaMaskOnboarding();
+        await this.initNftInfo();
+        // const onboarding = new MetaMaskOnboarding();
     },
     methods: {
         //初始化数据
@@ -751,15 +764,25 @@ export default {
             let saledNftNum = await this.masterInstance.getDaughterCount();
             this.saledNftNum = parseInt(saledNftNum);
             //查询全部数量
-            let totoNftNum = await this.masterInstance.totalSupply();
-            this.totoNftNum = parseInt(totoNftNum);
             // 获取用户是否可领取奖励
             let userClaim = await this.masterInstance.canClaim(this.local_address);
             console.info(userClaim, 'userClaim');
+            this.cliamList.forEach((m)=>{
+                this.$set(m,'value',userClaim[m.type])
+            })
+            let arr = this.cliamList.filter((item)=>{
+                return item.value == true
+            })
+            if(arr.length>0){
+                this.showDialog = true;
+                this.cliamObj = arr[arr.length-1]
+            }
+            this.isLoading = false;
         },
         //购买nft
         async mintNft() {
-            let b = ethers.BigNumber.from(Number(1)),
+            // this.isLoading = true;
+            let b = ethers.BigNumber.from(this.buyNum),
                 val = this.salePrice * this.buyNum * 1e18 + '';
             console.info(val);
             //
@@ -769,12 +792,22 @@ export default {
         async showResult(v, m) {
             let recepit = await v.wait();
             this.$toast({ text: m });
+
             if (recepit) {
-                this.reload();
+                setTimeout(()=>{
+                    this.reload();
+                },1000)
+                
             }
+            this.isLoading = false;
         },
-        oneClickSell() {
-            this.showDialog= false
+       async oneClickSell() {
+           this.showDialog= false;
+           this.isLoading = true;
+             let b = ethers.BigNumber.from(Number(this.cliamObj.index));
+            let result = await this.masterInstance.claim(b);
+            this.showResult(result, '领取空投成功');
+            
         },
         handleScroll(e) {
             var dis = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
@@ -841,6 +874,7 @@ $bg-img: '../assets/h5Swiper.png';
     color: white;
     background: #222;
     border-radius: 15px;
+    padding: 6%;
 }
 
 .gradient-border::after {
@@ -1029,6 +1063,18 @@ $bg-img: '../assets/h5Swiper.png';
 .operateBtn {
     height: 4.5rem;
     line-height: 3;
+    user-select: none;
+}
+.mintBtn {
+    text-align: center;
+    background: #aa99ea;
+}
+.up:active {
+    background: #d4cafc;
+}
+.mintBtn,
+.up {
+    cursor: pointer;
 }
 .waiK {
     // width: 179px;
@@ -1238,6 +1284,7 @@ $bg-img: '../assets/h5Swiper.png';
     width: 20px;
     height: 20px;
 }
+
 .crewModal {
     background: #000;
     background-size: 230%;
@@ -1245,10 +1292,10 @@ $bg-img: '../assets/h5Swiper.png';
     text-align: center;
     position: relative;
 }
-.crewModal .dialogClose {
+.dialogClose {
     position: absolute;
-    top: 0;
-    right: 2%;
+    top: -3px;
+    right: 12px;
     background: linear-gradient( 
 80deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
     background-clip: text;
@@ -1483,6 +1530,28 @@ $bg-img: '../assets/h5Swiper.png';
   50% {
     background-position: 100% 50%;
   }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.animate__pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
 </style>
 
