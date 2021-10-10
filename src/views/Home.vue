@@ -1,5 +1,4 @@
 <template>
-
   <div :class="$vuetify.breakpoint.mobile ? 'h5-page' : 'pc-page'">
     <v-row>
       <v-col cols="12">
@@ -1037,31 +1036,44 @@
         </v-fab-transition>
       </v-col>
     </v-row>
-    <v-dialog   persistent  v-model="showDialog" max-width="420" overlay-opacity="0.8">       
-        <div  class=" gradient-border flex-column">
-            <div>
-                <div class="my-6 ftw ft16 text-center">Reward Claiming Launchpad</div>
-                 <v-divider style="border-color: #fff" dark class="mb-3 mx-5 cfff"></v-divider>
-                <div class="pa-3 text-center">
-                    <!-- <div class="ft14">You have 10 daughters</div> -->
-                    <div class="ft14">You are eligible for</div>
-                    <div class="wenAn ft12 ftw mt-2">{{cliamObj.tips3}}</div>
-                </div>
-                <div class="mx-5 mt-3 pb-6">
-                    <v-row>
-                        <v-col>
-                            <v-btn  @click="oneClickSell" color="#fee08a" class="tenetFFF pa-6" block>
-                                <span >CLAIM </span>
-                            </v-btn>
-                        </v-col>
-                    </v-row>
-                </div>
-            </div>  
-             <div @click="showDialog = false" class="dialogClose">×</div>
+    <v-dialog
+      persistent
+      v-model="showDialog"
+      max-width="420"
+      overlay-opacity="0.8"
+    >
+      <div class="gradient-border flex-column">
+        <div>
+          <div class="my-6 ftw ft16 text-center">Reward Claiming Launchpad</div>
+          <v-divider
+            style="border-color: #fff"
+            dark
+            class="mb-3 mx-5 cfff"
+          ></v-divider>
+          <div class="pa-3 text-center">
+            <!-- <div class="ft14">You have 10 daughters</div> -->
+            <div class="ft14">You are eligible for</div>
+            <div class="wenAn ft12 ftw mt-2">{{ cliamObj.tips3 }}</div>
+          </div>
+          <div class="mx-5 mt-3 pb-6">
+            <v-row>
+              <v-col>
+                <v-btn
+                  @click="oneClickSell"
+                  color="#fee08a"
+                  class="tenetFFF pa-6"
+                  block
+                >
+                  <span>CLAIM </span>
+                </v-btn>
+              </v-col>
+            </v-row>
+          </div>
         </div>
-        
-        </v-dialog>
-        <loading :overlay="isLoading"/>
+        <div @click="showDialog = false" class="dialogClose">×</div>
+      </div>
+    </v-dialog>
+    <loading :overlay="isLoading" />
   </div>
 </template>
 
@@ -1258,42 +1270,41 @@ export default {
   },
   async mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
-    let address = window.sessionStorage.getItem('address');
-    if(address){
-          this.isLoading = true;
-        ethereum.on("chainChanged", (res) => {
-          if (parseInt(res) != 1) {
-            this.$toast({ text: "current RPC node is " + netInfo.name });
-            this.reload();
-          }
-        });
-
-        const { address, chainId, provider, masterAddr, masterInstance } =
-          await judgeUserOpenMetamask();
-        let netInfo = await provider.getNetwork();
-        if (netInfo.name != "homestead") {
-          this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+    let address = window.sessionStorage.getItem("address");
+    if (address) {
+      this.isLoading = true;
+      ethereum.on("chainChanged", (res) => {
+        if (parseInt(res) != 1) {
+          this.$toast({ text: "current RPC node is " + netInfo.name });
+          this.reload();
         }
-        this.local_address = address;
-        window.sessionStorage.setItem('address',this.local_address)
-        this.nonce = await provider.getTransactionCount(this.local_address);
-        console.info(this.nonce);
-        this.gasPrice = await provider.getGasPrice();
-        this.chainId = chainId;
-        let ethBalance = await provider.getBalance(address);
-        this.ethBalance = ethers.utils.formatEther(ethBalance);
-        this.tenetProvider = provider;
-        this.masterInstance = masterInstance;
-        this.masterAddr = masterAddr;
+      });
 
-        await this.initNftInfo();
+      const { address, chainId, provider, masterAddr, masterInstance } =
+        await judgeUserOpenMetamask();
+      let netInfo = await provider.getNetwork();
+      if (netInfo.name != "homestead") {
+        this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+      }
+      this.local_address = address;
+      window.sessionStorage.setItem("address", this.local_address);
+      this.nonce = await provider.getTransactionCount(this.local_address);
+      console.info(this.nonce);
+      this.gasPrice = await provider.getGasPrice();
+      this.chainId = chainId;
+      let ethBalance = await provider.getBalance(address);
+      this.ethBalance = ethers.utils.formatEther(ethBalance);
+      this.tenetProvider = provider;
+      this.masterInstance = masterInstance;
+      this.masterAddr = masterAddr;
+
+      await this.initNftInfo();
     }
-   
   },
   methods: {
     async connectWallet() {
       try {
-          this.isLoading = true;
+        this.isLoading = true;
         ethereum.on("chainChanged", (res) => {
           if (parseInt(res) != 1) {
             this.$toast({ text: "current RPC node is " + netInfo.name });
@@ -1308,7 +1319,7 @@ export default {
           this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
         }
         this.local_address = address;
-        window.sessionStorage.setItem('address',this.local_address)
+        window.sessionStorage.setItem("address", this.local_address);
         this.nonce = await provider.getTransactionCount(this.local_address);
         console.info(this.nonce);
         this.gasPrice = await provider.getGasPrice();
@@ -1321,23 +1332,28 @@ export default {
 
         await this.initNftInfo();
       } catch (error) {
-           this.isLoading = false;
-          this.$toast({ text:'Please install Metamask on Chrome plugin or Metamask APP.'})
-          if(this.$vuetify.breakpoint.mobile){
-               const u = navigator.userAgent;
-               const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-               if(isiOS){
-                   window.open('https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202')
-               }else{
-                   window.open('https://play.google.com/store/apps/details?id=io.metamask&hl')
-               }
-          }else{
-            const onboarding = new MetaMaskOnboarding();   
-            setTimeout(()=>{
-                onboarding.startOnboarding();   
-            },1000)
+        this.isLoading = false;
+        this.$toast({
+          text: "Please install Metamask on Chrome plugin or Metamask APP.",
+        });
+        if (this.$vuetify.breakpoint.mobile) {
+          const u = navigator.userAgent;
+          const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+          if (isiOS) {
+            window.open(
+              "https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202"
+            );
+          } else {
+            window.open(
+              "https://play.google.com/store/apps/details?id=io.metamask&hl"
+            );
           }
-          
+        } else {
+          const onboarding = new MetaMaskOnboarding();
+          setTimeout(() => {
+            onboarding.startOnboarding();
+          }, 1000);
+        }
       }
     },
     //初始化数据
@@ -1393,9 +1409,13 @@ export default {
     async oneClickSell() {
       this.showDialog = false;
       this.isLoading = true;
-      let b = ethers.BigNumber.from(Number(this.cliamObj.index));
-      let result = await this.masterInstance.claim(b);
-      this.showResult(result, "领取空投成功");
+      try {
+        let b = ethers.BigNumber.from(Number(this.cliamObj.index));
+        let result = await this.masterInstance.claim(b);
+        this.showResult(result, "CLAIM completed ");
+      } catch (error) {
+        this.isLoading = false;
+      }
     },
     handleScroll(e) {
       var dis =
@@ -1900,7 +1920,17 @@ $bg-img: "../assets/h5Swiper.png";
   position: absolute;
   top: -3px;
   right: 12px;
-  background: linear-gradient(80deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+  background: linear-gradient(
+    80deg,
+    #5f86f2,
+    #a65ff2,
+    #f25fd0,
+    #f25f61,
+    #f2cb5f,
+    #abf25f,
+    #5ff281,
+    #5ff2f0
+  );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
