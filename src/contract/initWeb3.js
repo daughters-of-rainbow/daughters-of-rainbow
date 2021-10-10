@@ -25,7 +25,7 @@ export const judgeUserOpenMetamask = () => {
              resolve(data)
            }
           } else {
-           alert('Please install an Ethereum wallet or a metamask plugin')
+           alert('Please install Metamask on Chrome plugin or Metamask APP.')
           }
       },10)
      
