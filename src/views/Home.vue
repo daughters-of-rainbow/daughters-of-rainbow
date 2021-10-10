@@ -1330,10 +1330,21 @@ export default {
       } catch (error) {
            this.isLoading = false;
           this.$toast({ text:'Please install Metamask on Chrome plugin or Metamask APP.'})
-           const onboarding = new MetaMaskOnboarding();
-          setTimeout(()=>{
-                 onboarding.startOnboarding();
-          },1000)
+          if(this.$vuetify.breakpoint.mobile){
+               const u = navigator.userAgent;
+               const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+               if(isiOS){
+                   window.open('https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202')
+               }else{
+                   window.open('https://play.google.com/store/apps/details?id=io.metamask&hl')
+               }
+          }else{
+            const onboarding = new MetaMaskOnboarding();   
+            setTimeout(()=>{
+                onboarding.startOnboarding();   
+            },1000)
+          }
+          
       }
     },
     //初始化数据
