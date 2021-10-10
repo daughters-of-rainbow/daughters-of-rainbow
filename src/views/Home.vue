@@ -1265,42 +1265,45 @@ export default {
   },
   async mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
-    let address = window.sessionStorage.getItem('address');
-    if(address){
-          this.isLoading = true;
-        ethereum.on("chainChanged", (res) => {
-          if (parseInt(res) != 1) {
-            this.$toast({ text: "current RPC node is " + netInfo.name });
-            this.reload();
-          }
-        });
-
-        const { address, chainId, provider, masterAddr, masterInstance } =
-          await judgeUserOpenMetamask();
-        let netInfo = await provider.getNetwork();
-        if (netInfo.name != "homestead") {
-          this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+    let address = window.sessionStorage.getItem("address");
+    if (address) {
+      this.isLoading = true;
+      ethereum.on("chainChanged", (res) => {
+        if (parseInt(res) != 1) {
+          this.$toast({ text: "current RPC node is " + netInfo.name });
+          this.reload();
         }
-        this.local_address = address;
-        window.sessionStorage.setItem('address',this.local_address)
-        this.nonce = await provider.getTransactionCount(this.local_address);
-        console.info(this.nonce);
-        this.gasPrice = await provider.getGasPrice();
-        this.chainId = chainId;
-        let ethBalance = await provider.getBalance(address);
-        this.ethBalance = ethers.utils.formatEther(ethBalance);
-        this.tenetProvider = provider;
-        this.masterInstance = masterInstance;
-        this.masterAddr = masterAddr;
+      });
 
-        await this.initNftInfo();
+      const { address, chainId, provider, masterAddr, masterInstance } =
+        await judgeUserOpenMetamask();
+        console.info(chainId,'chainId')
+      let netInfo = await provider.getNetwork();
+      
+      if (netInfo.name != "homestead") {
+           await this.switchNetwork();
+        this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+      }
+      this.local_address = address;
+      window.sessionStorage.setItem("address", this.local_address);
+      this.nonce = await provider.getTransactionCount(this.local_address);
+      console.info(this.nonce);
+      this.gasPrice = await provider.getGasPrice();
+      this.chainId = chainId;
+      let ethBalance = await provider.getBalance(address);
+      this.ethBalance = ethers.utils.formatEther(ethBalance);
+      this.tenetProvider = provider;
+      this.masterInstance = masterInstance;
+      this.masterAddr = masterAddr;
+      const onboarding = new MetaMaskOnboarding();
+      console.info(onboarding);
+      await this.initNftInfo();
     }
-   
   },
   methods: {
     async connectWallet() {
       try {
-          this.isLoading = true;
+        this.isLoading = true;
         ethereum.on("chainChanged", (res) => {
           if (parseInt(res) != 1) {
             this.$toast({ text: "current RPC node is " + netInfo.name });
@@ -1313,9 +1316,10 @@ export default {
         let netInfo = await provider.getNetwork();
         if (netInfo.name != "homestead") {
           this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+        //    await this.switchNetwork();
         }
         this.local_address = address;
-        window.sessionStorage.setItem('address',this.local_address)
+        window.sessionStorage.setItem("address", this.local_address);
         this.nonce = await provider.getTransactionCount(this.local_address);
         console.info(this.nonce);
         this.gasPrice = await provider.getGasPrice();
@@ -1328,24 +1332,57 @@ export default {
 
         await this.initNftInfo();
       } catch (error) {
-           this.isLoading = false;
-          this.$toast({ text:'Please install Metamask on Chrome plugin or Metamask APP.'})
-          if(this.$vuetify.breakpoint.mobile){
-               const u = navigator.userAgent;
-               const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-               if(isiOS){
-                   window.open('https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202')
-               }else{
-                   window.open('https://play.google.com/store/apps/details?id=io.metamask&hl')
-               }
-          }else{
-            const onboarding = new MetaMaskOnboarding();   
-            setTimeout(()=>{
-                onboarding.startOnboarding();   
-            },1000)
+        this.isLoading = false;
+        const onboarding = new MetaMaskOnboarding();
+        if (onboarding.state == "INSTALLED") {
+        //  await this.switchNetwork();
+        } else {
+          this.$toast({
+            text: "Please install Metamask on Chrome plugin or Metamask APP.",
+          });
+          if (this.$vuetify.breakpoint.mobile) {
+            const u = navigator.userAgent;
+            const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+            if (isiOS) {
+              window.open(
+                "https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202"
+              );
+            } else {
+              window.open(
+                "https://play.google.com/store/apps/details?id=io.metamask&hl"
+              );
+            }
+          } else {
+            setTimeout(() => {
+              onboarding.startOnboarding();
+            }, 1000);
           }
-          
+        }
       }
+    },
+    async switchNetwork(){
+        try {
+            await window.ethereum.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: "0x1" }],
+            });
+          } catch (switchError) {
+               console.info(switchError,'--=-=-=')
+            // This error code indicates that the chain has not been added to MetaMask.
+            if (switchError.code === 4902) {
+              try {
+                await ethereum.request({
+                  method: "wallet_addEthereumChain",
+                  params: [
+                    { chainId: "0x1", rpcUrl: "https://main-light.eth.linkpool.io" /* ... */ },
+                  ],
+                });
+              } catch (addError) {
+                console.info(addError)
+              }
+            }
+            // handle other "switch" errors
+          }
     },
     //初始化数据
     async initNftInfo() {
