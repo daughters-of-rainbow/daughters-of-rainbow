@@ -1391,14 +1391,19 @@ export default {
                 this.isLoading = true;
                 let b = ethers.BigNumber.from(this.buyNum),
                 val = this.salePrice * this.buyNum * 1e18 + "";
-                // console.info(val);
-                //
+                console.info(b,val);
                 let result = await this.masterInstance.mint(b, { value: val });
                 this.showResult(result, "NFT purchase completed");
             } catch (error) {
-                this.isLoading = false;
-                this.$toast({ text: "Wallet has to be recharged." });
-                // console.info(error);
+              this.isLoading = false;
+              console.info(error,error.code)
+              if(error.code=='INSUFFICIENT_FUNDS'){
+                 this.$toast({ text: "Wallet has to be recharged." });
+              }else{
+                this.$toast({ text: "Your Address not in whitelist" });
+              }
+                
+               
             }
         } else  {
             this.$toast({ text: "Please connect wallet." });
