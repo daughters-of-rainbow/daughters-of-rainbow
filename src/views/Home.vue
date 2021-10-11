@@ -186,7 +186,7 @@
                   </v-row>
                   <v-row :class="$vuetify.breakpoint.mobile ? '' : 'my-10'">
                     <v-col class="px-0">
-                      <v-card v-if="true" class="operateBtn" color="#AA99EA">
+                      <v-card v-if="userInWhiteList" class="operateBtn" color="#AA99EA">
                         <v-row
                           justify="center"
                           style="overflow: hidden; max-height: 72px"
@@ -1211,6 +1211,7 @@ export default {
     nonce: 0,
     masterAddr: "",
     dialog: false,
+    userInWhiteList:false
   }),
   created() {
     const fun = () => {
@@ -1370,7 +1371,9 @@ export default {
       //查询全部数量
       // 获取用户是否可领取奖励
       let userClaim = await this.masterInstance.canClaim(this.local_address);
-      // console.info(userClaim, "userClaim");
+      //获取用户是否是在白名单
+      let userInWhiteList = await this.masterInstance.isWhitelist(this.local_address)
+      this.userInWhiteList = userInWhiteList
       this.cliamList.forEach((m) => {
         this.$set(m, "value", userClaim[m.type]);
       });
