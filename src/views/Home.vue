@@ -195,7 +195,7 @@
                             <v-icon size="30" color="#4b3983">mdi-star</v-icon>
                           </v-col>
                           <v-col @click="mintNft" cols="7" class="mintBtn pa-0">
-                            <v-btn  class="text-h6" color="#aa99ea" block dark width="100%" height="100%" depressed="false">
+                            <v-btn  class="text-h6" color="#aa99ea" block dark width="100%" height="100%" :depressed="false">
                                 <span style="color: #4b3983">MINT</span><span class="cfff ml-1"> for {{ salePrice }} ETH</span>
                             </v-btn>
                           </v-col>
