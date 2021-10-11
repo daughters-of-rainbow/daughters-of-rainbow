@@ -219,7 +219,7 @@
                         </v-row>
                       </v-card>
                       <v-img
-                        class="mintBtn"
+                       
                         v-else
                         src="../assets/btn_coming_soon.png"
                       ></v-img>
