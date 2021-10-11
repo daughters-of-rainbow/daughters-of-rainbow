@@ -1372,8 +1372,15 @@ export default {
       // 获取用户是否可领取奖励
       let userClaim = await this.masterInstance.canClaim(this.local_address);
       //获取用户是否是在白名单
-      let userInWhiteList = await this.masterInstance.isWhitelist(this.local_address)
-      this.userInWhiteList = userInWhiteList
+      let userInWhiteList = await this.masterInstance.isWhitelist(this.local_address);
+      let deadTime = new Date('2021-10-13 18:00:00').getTime(),
+          nowTime = new Date().getTime();
+      if((nowTime<deadTime&&userInWhiteList)||nowTime>=deadTime){
+         this.userInWhiteList = true
+      }else{
+         this.userInWhiteList = false
+      }    
+     
       this.cliamList.forEach((m) => {
         this.$set(m, "value", userClaim[m.type]);
       });
