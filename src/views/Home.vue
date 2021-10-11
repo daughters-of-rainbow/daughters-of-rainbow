@@ -13,6 +13,7 @@
                   <div class="socialItem">
                     <v-btn
                       href="https://discord.gg/7dbgB5jDvE"
+                      target="_blank"
                       outlined
                       small
                       fab
@@ -26,6 +27,7 @@
                   <div class="socialItem">
                     <v-btn
                       href="https://www.instagram.com/daughtersofrainbownft/"
+                      target="_blank"
                       outlined
                       small
                       fab
@@ -39,6 +41,7 @@
                   <div class="socialItem">
                     <v-btn
                       href="https://twitter.com/dorlovenft"
+                      target="_blank"
                       outlined
                       small
                       fab
@@ -50,7 +53,12 @@
                     </v-btn>
                   </div>
                   <div class="socialItem">
-                    <v-btn outlined small fab>
+                    <v-btn 
+                      href="https://opensea.io/collection/daughters-of-rainbow-v2"
+                      target="_blank"
+                      outlined 
+                      small 
+                      fab>
                       <svg-icon
                         className="v2"
                         data_iconName="ic-opensea"
@@ -62,6 +70,7 @@
                   <div class="socialItem">
                     <v-btn
                       href="https://discord.gg/7dbgB5jDvE"
+                      target="_blank"
                       outlined
                       small
                       fab
@@ -75,6 +84,7 @@
                   <div class="socialItem">
                     <v-btn
                       href="https://www.instagram.com/daughtersofrainbownft/"
+                      target="_blank"
                       outlined
                       small
                       fab
@@ -88,6 +98,7 @@
                   <div class="socialItem">
                     <v-btn
                       href="https://twitter.com/dorlovenft"
+                      target="_blank"
                       outlined
                       small
                       fab
@@ -100,7 +111,8 @@
                   </div>
                   <div class="socialItem">
                     <v-btn
-                      href="https://twitter.com/dorlovenft"
+                      href="https://opensea.io/collection/daughters-of-rainbow-v2"
+                      target="_blank"
                       outlined
                       small
                       fab
@@ -153,7 +165,7 @@
                   <v-img src="../assets/blindBox.png"></v-img>
                 </div>
               </v-col>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="6" :class="$vuetify.breakpoint.mobile ? '' : 'mt-12'">
                 <div
                   :class="
                     $vuetify.breakpoint.mobile ? 'mx-3' : 'mx-7 mt-10 px-5'
@@ -182,26 +194,24 @@
                           <v-col class="star text-center" cols="2">
                             <v-icon size="30" color="#4b3983">mdi-star</v-icon>
                           </v-col>
-                          <v-col @click="mintNft" cols="7">
-                            <span style="color: #4b3983" class="text-h6"
-                              >MINT
-                              <span class="cfff">
-                                for {{ salePrice }} ETH</span
-                              ></span
-                            >
+                          <v-col @click="mintNft" cols="7" class="mintBtn pa-0">
+                            <v-btn  class="text-h6" color="#aa99ea" block dark width="100%" height="100%" depressed="false">
+                                <span style="color: #4b3983">MINT</span><span class="cfff ml-1"> for {{ salePrice }} ETH</span>
+                            </v-btn>
                           </v-col>
                           <v-col
                             cols="3"
                             class="pa-0"
                             style="background-color: #fff"
                           >
-                            <div class="up" @click="buyNum += 1">
+                            <!-- <div class="up" @click="buyNum += 1"> -->
+                            <div class="up" @click="buyNum < 2 ? (buyNum += 1) : 2">
                               <img src="../assets/arrowTop.png" alt="" />
                             </div>
                             <div class="inputNum">{{ buyNum }}</div>
                             <div
                               class="up"
-                              @click="buyNum > 0 ? (buyNum -= 1) : 0"
+                              @click="buyNum > 1 ? (buyNum -= 1) : 1"
                             >
                               <img src="../assets/arrowDown.png" alt="" />
                             </div>
@@ -382,8 +392,8 @@
                   />
                 </div>
                 <div class="pt-4 cfff">
-                  <span class="strc ft20">Phase I ：1,523</span> DAUGHTERS at
-                  0.05 ETH/ piece (Blind-box)
+                  <span class="strc ft20 mr-2">Phase I : 999</span> DAUGHTERS at
+                  0.05 ETH/<small>piece</small> (Blind-box)
                 </div>
               </h4>
               <v-row justify="center" class="align-center mx-3">
@@ -412,7 +422,7 @@
                       </div>
                       <div>
                         Sell out 30% : Unlocks Daughters of Alien series on
-                        Opensea ( 44 pieces with 0.07 ETH/ piece)
+                        Opensea (44 pieces with 0.07 ETH/<small>piece</small>)
                       </div>
                     </div>
                     <div class="d-flex">
@@ -423,31 +433,13 @@
                         ></svg-icon>
                       </div>
                       <div>
-                        Sell out 50%: Unlocks reward airdrop plan ( details to
-                        be announced on discord/twitter)
+                        Sell out 50%: Unlocks reward airdrop plan (details to be announced on discord/twitter)
                       </div>
                     </div>
                     <div class="ml-7">
-                      - Holders of 5: receive a silver grade mix-n-match
-                      Daughters ( total 5 designs with 10pc/each)
-                      <br />
-                      - Holders of 10: receive a gold grade mix-n-match
-                      Daughters ( total 10 designs with 5 pc/each)<br />
-                      - Holders of 20: receive a rainbow grade mix-n-match
-                      Daughters (total 5 animated designs with 1 pc/each)<br />
-                    </div>
-                    <div class="d-flex">
-                      <div class="mr-1">
-                        <svg-icon
-                          className="logo_icon middle_svg"
-                          data_iconName="buloat"
-                        ></svg-icon>
-                      </div>
-                      <div>Sell out 100%: Unlock Phase II rare Daughters</div>
-                    </div>
-                    <div class="ml-7">
-                      - Holders of 3 will receive an e-Bible of Daughter’s
-                      family ( details will be announced on discord/twitter)
+                        - Holders of 5 : receive a silver grade mix-n-match Daughters<br />
+                        - Holders of 10 : receive a gold grade mix-n-match Daughters<br />
+                        - Holders of 20 : receive a rainbow grade mix-n-match Daughters<br />
                     </div>
                   </div>
                 </v-col>
@@ -466,8 +458,8 @@
                   />
                 </div>
                 <div class="cfff">
-                  <span class="strc ft20">Phase II：450</span> Rare Animated
-                  DAUGHTERS at 0.15 ETH/ piece (on Opensea)
+                  <span class="strc ft20 mr-2">Phase II : 450</span> Rare Animated
+                  DAUGHTERS at 0.15 ETH/<small>piece</small> (on Opensea)
                 </div>
               </h4>
               <v-row justify="center" class="align-center mx-3">
@@ -501,8 +493,7 @@
 
                     <div class="ml-7">
                       - They will be listed directly on Opensea <br />
-                      - Holders of 3 will get mix-n-match daughter with random
-                      rarity ( details to be announced on discord/twitter)<br />
+                      - Holders of 3 will get an e-bible NFT of Daughter family.(details to be announced on discord/twitter)<br />
                     </div>
                     <div class="d-flex">
                       <div class="mr-1">
@@ -534,8 +525,7 @@
                   />
                 </div>
                 <div class="cfff">
-                  <span class="strc ft20">Phase III：30</span> pieces of MOTHER
-                  who created DAUGHTERS(On Opensea)
+                  <span class="strc ft20 mr-2">Phase III：30</span> pieces of MOTHER who created DAUGHTERS (On Opensea)
                 </div>
               </h4>
               <v-row justify="center" class="align-center mx-3">
@@ -570,10 +560,10 @@
                       - Auction: Bidding price <br />
                       - They will be listed directly on Opensea<br />
                       - Each holder of mother will receive a 3D version of
-                      artwork ( details to be announced on discord/twitter)
+                      artwork (details to be announced on discord/twitter)
                       <br />
                       - Owners of mother will be on VVIP pre-sale whitelist of
-                      future artist titles and more rewards.
+                      future artist titles and more rewards
                     </div>
                   </div>
                 </v-col>
@@ -607,10 +597,8 @@
                 />
               </div>
               <div class="cfff">
-                <span class="strc ft30">Phase I ：1,523</span>
-                <span class="ft24"
-                  >DAUGHTERS at 0.05 ETH/ piece (Blind-box)</span
-                >
+                <span class="strc ft30 mr-3">Phase I : 999</span>
+                <span class="ft24">DAUGHTERS at 0.05 ETH/<small>piece</small> (Blind-box)</span>
               </div>
             </h3>
             <v-row justify="center" class="align-center roadmapiItem">
@@ -638,8 +626,7 @@
                       ></svg-icon>
                     </div>
                     <div>
-                      Sell out 30% : Unlocks Daughters of Alien series on
-                      Opensea ( 44 pieces with 0.07 ETH/ piece)
+                      Sell out 30% : Unlocks Daughters of Alien series on Opensea (44 pieces with 0.07 ETH/<small>piece</small>)
                     </div>
                   </div>
                   <div class="d-flex">
@@ -650,30 +637,13 @@
                       ></svg-icon>
                     </div>
                     <div>
-                      Sell out 50%: Unlocks reward airdrop plan ( details to be
-                      announced on discord/twitter)
+                      Sell out 50%: Unlocks reward airdrop plan (details to be announced on discord/twitter)
                     </div>
                   </div>
                   <div class="ml-7">
-                    - Holders of 5: receive a silver grade mix-n-match Daughters
-                    ( total 5 designs with 10pc/each) <br />
-                    - Holders of 10: receive a gold grade mix-n-match Daughters
-                    ( total 10 designs with 5 pc/each)<br />
-                    - Holders of 20: receive a rainbow grade mix-n-match
-                    Daughters (total 5 animated designs with 1 pc/each)<br />
-                  </div>
-                  <div class="d-flex">
-                    <div class="mr-1">
-                      <svg-icon
-                        className="logo_icon middle_svg"
-                        data_iconName="buloat"
-                      ></svg-icon>
-                    </div>
-                    <div>Sell out 100%: Unlock Phase II rare Daughters</div>
-                  </div>
-                  <div class="ml-7">
-                    - Holders of 3 will receive an e-Bible of Daughter’s family
-                    ( details will be announced on discord/twitter)
+                        - Holders of 5 : receive a silver grade mix-n-match Daughters<br />
+                        - Holders of 10 : receive a gold grade mix-n-match Daughters<br />
+                        - Holders of 20 : receive a rainbow grade mix-n-match Daughters<br />
                   </div>
                 </h2>
               </v-col>
@@ -692,10 +662,8 @@
                 />
               </div>
               <div class="cfff">
-                <span class="strc ft30">Phase II：450</span>
-                <span class="ft24"
-                  >Rare Animated DAUGHTERS at 0.15 ETH/ piece (on Opensea)</span
-                >
+                <span class="strc ft30 mr-3">Phase II : 450</span>
+                <span class="ft24">Rare Animated DAUGHTERS at 0.15 ETH/<small>piece</small> (on Opensea)</span>
               </div>
             </h3>
             <v-row justify="center" class="align-center roadmapiItem">
@@ -728,8 +696,7 @@
                   </div>
                   <div class="ml-7">
                     - They will be listed directly on Opensea <br />
-                    - Holders of 3 will get mix-n-match daughter with random
-                    rarity ( details to be announced on discord/twitter)<br />
+                    - Holders of 3 will get an e-bible NFT of Daughter family.(details to be announced on discord/twitter)<br />
                   </div>
                   <div class="d-flex">
                     <div class="mr-1">
@@ -741,8 +708,7 @@
                     <div>Sell out 100%: Unlock Phase III</div>
                   </div>
                   <div class="ml-7">
-                    - 5% of sales profit will be donated to a charity fund
-                    supporting young artists and unlock Phase III
+                    - 5% of sales profit will be donated to a charity fund supporting young artists and unlock Phase III
                   </div>
                 </h2>
               </v-col>
@@ -761,10 +727,8 @@
                 />
               </div>
               <div class="cfff">
-                <span class="strc ft30">Phase III：30</span>
-                <span class="ft24"
-                  >pieces of MOTHER who created DAUGHTERS(On Opensea)</span
-                >
+                <span class="strc ft30 mr-3">Phase III：30</span>
+                <span class="ft24">pieces of MOTHER who created DAUGHTERS (On Opensea)</span>
               </div>
             </h3>
             <v-row justify="center" class="align-center roadmapiItem">
@@ -797,9 +761,8 @@
                     - Auction: Bidding price <br />
                     - They will be listed directly on Opensea<br />
                     - Each holder of mother will receive a 3D version of artwork
-                    ( details to be announced on discord/twitter) <br />
-                    - Owners of mother will be on VVIP pre-sale whitelist of
-                    future artist titles and more rewards.
+                    (details to be announced on discord/twitter) <br />
+                    - Owners of mother will be on VVIP pre-sale whitelist of future artist titles and more rewards
                   </div>
                 </h2>
               </v-col>
@@ -1135,7 +1098,7 @@ export default {
       {
         ques: "WHAT IS THE SMART CONTRACT ADDRESS FOR DOR?",
         answer:
-          "This will be launched on Website and Twitter on the launch day!",
+          "This will be launched on Website and Twitter on the launch day !",
       },
       {
         ques: "WILL THERE BE A PRIVATE-SALE?",
@@ -1145,17 +1108,17 @@ export default {
       {
         ques: "WHAT IS DAUGHTERS OF ALIEN SERIES?",
         answer:
-          "It is a special series unlocked when phase I daughters are sold with 30%. You can ﬁnd our super cool 44 pieces of Daughters of Alien series be listed with 0.07 ETH/ piece on Opensea.",
+          "It is a special series unlocked when phase I daughters are sold with 30%. You can ﬁnd our super cool 44 pieces of Daughters of Alien series be listed with 0.07 ETH/<small>piece</small> on Opensea.",
       },
       {
         ques: "WHAT ARE MIX-N-MATCH DAUGHTERS DROPS?",
         answer:
-          "Mix-n-Match daughters are reward giveaways for our Phase I daughter holders.<p>- Holders of 5: receive a silver grade mix-n-match Daughters (5 designs with 10pc/each)</p><p>- Holders of 10: receive a gold grade mix-n-match Daughters (10 designs with 5 pc/each)</p>- Holders of 20: receive a rainbow grade mix-n-match Daughters (5 animated designs with 1 pc/each)",
+          "<p>Mix-n-Match daughters are reward giveaways for our Phase I daughter holders.</p><p>- Holders of 5: receive a silver grade mix-n-match Daughters.</p><p>- Holders of 10: receive a gold grade mix-n-match Daughters.</p>- Holders of 20: receive a rainbow grade mix-n-match Daughters.",
       },
       {
         ques: "WHAT ARE RARE ANIMATED DAUGHTERS IN PHASE II?",
         answer:
-          "They are 30 unique animated daughters NFT with 15 copies of each one. They will be listed on opensea with 0.15 ETH /piece. ",
+          "They are 30 unique animated daughters NFT with 15 copies of each one. They will be listed on opensea with 0.15 ETH /<small>piece</small>. ",
       },
       {
         ques: "WHAT IS THE MOTHER IN PHASE III?",
@@ -1267,6 +1230,11 @@ export default {
       }, 100);
     };
     fun();
+
+    const onboarding = new MetaMaskOnboarding();
+    if (onboarding.state !== "INSTALLED") {
+      this.$toast({ text: "Please install Metamask on Chrome plugin or Metamask APP." });
+    }
   },
   async mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
@@ -1282,14 +1250,18 @@ export default {
 
       const { address, chainId, provider, masterAddr, masterInstance } =
         await judgeUserOpenMetamask();
+        // console.info(chainId,'chainId')
       let netInfo = await provider.getNetwork();
+
       if (netInfo.name != "homestead") {
+        await this.switchNetwork();
         this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+        this.isLoading = false;
       }
       this.local_address = address;
       window.sessionStorage.setItem("address", this.local_address);
       this.nonce = await provider.getTransactionCount(this.local_address);
-      console.info(this.nonce);
+      // console.info(this.nonce);
       this.gasPrice = await provider.getGasPrice();
       this.chainId = chainId;
       let ethBalance = await provider.getBalance(address);
@@ -1297,7 +1269,8 @@ export default {
       this.tenetProvider = provider;
       this.masterInstance = masterInstance;
       this.masterAddr = masterAddr;
-
+      // const onboarding = new MetaMaskOnboarding();
+      // console.info(onboarding);
       await this.initNftInfo();
     }
   },
@@ -1316,12 +1289,14 @@ export default {
           await judgeUserOpenMetamask();
         let netInfo = await provider.getNetwork();
         if (netInfo.name != "homestead") {
+          await this.switchNetwork();
           this.$toast({ text: "Switch to Ethereum Mainnet Network！" });
+          this.isLoading = false;
         }
         this.local_address = address;
         window.sessionStorage.setItem("address", this.local_address);
         this.nonce = await provider.getTransactionCount(this.local_address);
-        console.info(this.nonce);
+        // console.info(this.nonce);
         this.gasPrice = await provider.getGasPrice();
         this.chainId = chainId;
         let ethBalance = await provider.getBalance(address);
@@ -1333,42 +1308,69 @@ export default {
         await this.initNftInfo();
       } catch (error) {
         this.isLoading = false;
-        this.$toast({
-          text: "Please install Metamask on Chrome plugin or Metamask APP.",
-        });
-        if (this.$vuetify.breakpoint.mobile) {
-          const u = navigator.userAgent;
-          const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-          if (isiOS) {
-            window.open(
-              "https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202"
-            );
-          } else {
-            window.open(
-              "https://play.google.com/store/apps/details?id=io.metamask&hl"
-            );
-          }
+        const onboarding = new MetaMaskOnboarding();
+        if (onboarding.state == "INSTALLED") {
+          await this.switchNetwork();
         } else {
-          const onboarding = new MetaMaskOnboarding();
-          setTimeout(() => {
-            onboarding.startOnboarding();
-          }, 1000);
+          this.$toast({ text: "Please install Metamask on Chrome plugin or Metamask APP." });
+
+          if (this.$vuetify.breakpoint.mobile) {
+            const u = navigator.userAgent;
+            const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+            if (isiOS) {
+              window.open(
+                "https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202"
+              );
+            } else {
+              window.open(
+                "https://play.google.com/store/apps/details?id=io.metamask&hl"
+              );
+            }
+          } else {
+            setTimeout(() => {
+              onboarding.startOnboarding();
+            }, 1000);
+          }
         }
       }
+    },
+    async switchNetwork(){
+        try {
+            await window.ethereum.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: "0x1" }],
+            });
+          } catch (switchError) {
+              //  console.info(switchError,'--=-=-=')
+            // This error code indicates that the chain has not been added to MetaMask.
+            if (switchError.code === 4902) {
+              try {
+                await ethereum.request({
+                  method: "wallet_addEthereumChain",
+                  params: [
+                    { chainId: "0x1", rpcUrl: "https://main-light.eth.linkpool.io" /* ... */ },
+                  ],
+                });
+              } catch (addError) {
+                // console.info(addError)
+              }
+            }
+            // handle other "switch" errors
+          }
     },
     //初始化数据
     async initNftInfo() {
       //查询预售价格
       let salePrice = await this.masterInstance.salePrice();
       this.salePrice = ethers.utils.formatEther(salePrice);
-      console.info(this.salePrice);
+      // console.info(this.salePrice);
       //查询已售出的数量
       let saledNftNum = await this.masterInstance.getDaughterCount();
       this.saledNftNum = parseInt(saledNftNum);
       //查询全部数量
       // 获取用户是否可领取奖励
       let userClaim = await this.masterInstance.canClaim(this.local_address);
-      console.info(userClaim, "userClaim");
+      // console.info(userClaim, "userClaim");
       this.cliamList.forEach((m) => {
         this.$set(m, "value", userClaim[m.type]);
       });
@@ -1383,17 +1385,24 @@ export default {
     },
     //购买nft
     async mintNft() {
-      try {
-        this.isLoading = true;
-        let b = ethers.BigNumber.from(this.buyNum),
-          val = this.salePrice * this.buyNum * 1e18 + "";
-        console.info(val);
-        //
-        let result = await this.masterInstance.mint(b, { value: val });
-        this.showResult(result, "NFT purchase completed");
-      } catch (error) {
-        console.info(error);
-      }
+        let address = window.sessionStorage.getItem("address");
+        if (address) {
+            try {
+                this.isLoading = true;
+                let b = ethers.BigNumber.from(this.buyNum),
+                val = this.salePrice * this.buyNum * 1e18 + "";
+                // console.info(val);
+                //
+                let result = await this.masterInstance.mint(b, { value: val });
+                this.showResult(result, "NFT purchase completed");
+            } catch (error) {
+                this.isLoading = false;
+                this.$toast({ text: "Wallet has to be recharged." });
+                // console.info(error);
+            }
+        } else  {
+            this.$toast({ text: "Please connect wallet." });
+        }
     },
     async showResult(v, m) {
       let recepit = await v.wait();
@@ -1585,7 +1594,7 @@ $bg-img: "../assets/h5Swiper.png";
 .ques {
   border: 3px solid #ffffff;
   border-radius: 12px;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-weight: bold;
   text-align: left;
   font-size: 14px;

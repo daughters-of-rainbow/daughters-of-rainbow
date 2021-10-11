@@ -7,9 +7,9 @@
         ></v-progress-circular> -->
          <!-- <svg-icon class="mx-auto" className="atptMax_icon" data_iconName="loading" /> -->
          <div class="loading-alert">
-             <p>Connecting to Blockchain data...</p>
+             <p>Connecting to Ethereum Network</p>
              <div class="rainbow"></div>
-             <span>Do not reload or close this page.</span>
+             <span>Do not refresh or close this page</span>
          </div>
          <!-- <p>Please waiting</p> -->
         </v-overlay> 
@@ -43,7 +43,7 @@ export default {
     text-align: center;
 }
 .rainbow {
-    width: 78%;
+    width: 83%;
     height: 3px;
     margin: 10px 0;
     background: linear-gradient(60deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0 );
