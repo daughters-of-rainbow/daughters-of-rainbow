@@ -1399,8 +1399,10 @@ export default {
               console.info(error,error.code)
               if(error.code=='INSUFFICIENT_FUNDS'){
                  this.$toast({ text: "Wallet has to be recharged." });
+              }else if(error.code=='UNPREDICTABLE_GAS_LIMIT'){
+                 this.$toast({ text: "Your Address not in whitelist" });
               }else{
-                this.$toast({ text: "Your Address not in whitelist" });
+                this.$toast({ text: "NetWork error ,please try Agagin" });
               }
                 
                
