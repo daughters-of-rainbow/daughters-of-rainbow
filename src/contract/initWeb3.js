@@ -6,7 +6,7 @@ export const judgeUserOpenMetamask = () => {
       var obj = setInterval(async () => {
          if (typeof window.ethereum != 'undefined') {
             let ethereum = window.ethereum
-           let isConnected = ethereum.isConnected();
+           let isConnected = window.ethereum.isConnected();
            if(isConnected){
             let accounts = await ethereum.request({method:'eth_requestAccounts'});
              let chainId = await ethereum.request({method:'eth_chainId'});
@@ -23,11 +23,13 @@ export const judgeUserOpenMetamask = () => {
              }
              clearInterval(obj);
              resolve(data)
+           }else{
+              console.log('some thing wrong with current env')
            }
           } else {
            alert('Please install Metamask on Chrome plugin or Metamask APP.')
           }
-      },10)
+      },100)
      
    })
  }
